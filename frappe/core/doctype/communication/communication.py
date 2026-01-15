@@ -401,7 +401,11 @@ class Communication(Document, CommunicationEmailMixin):
 			return
 
 		for doctype, docname in parse_email([self.recipients, self.cc, self.bcc]):
-			if not frappe.db.get_value(doctype, docname, ignore=True):
+			# Both document and doctype names should be case insensitive in email addresses.
+			doctype = frappe.db.get_value("DocType", doctype)
+			if doctype:
+				docname = frappe.db.get_value(doctype, docname, ignore=True)
+			if not (doctype and docname):
 				continue
 
 			self.add_link(doctype, docname)
@@ -561,11 +565,11 @@ def parse_email(email_strings):
 
 		for email in email_string.split(","):
 			local_part = email.split("@", 1)[0].strip('"')
-			user, detail = None, None
+			_user, detail = None, None
 			if "+" in local_part:
-				user, detail = local_part.split("+", 1)
+				_user, detail = local_part.split("+", 1)
 			elif "--" in local_part:
-				detail, user = local_part.rsplit("--", 1)
+				detail, _user = local_part.rsplit("--", 1)
 
 			if not detail:
 				continue
@@ -579,7 +583,7 @@ def parse_email(email_strings):
 			if not document_parts or len(document_parts) != 2:
 				continue
 
-			doctype = unquote_plus(document_parts[0])
+			doctype = frappe.unscrub(unquote_plus(document_parts[0]))
 			docname = unquote_plus(document_parts[1])
 			yield doctype, docname
 

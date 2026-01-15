@@ -25,17 +25,8 @@ from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 from frappe.desk.form.load import getdoc
 from frappe.model.delete_doc import delete_controllers
 from frappe.model.sync import remove_orphan_doctypes
-from frappe.tests import IntegrationTestCase, UnitTestCase
+from frappe.tests import IntegrationTestCase
 from frappe.utils import get_table_name
-
-
-class UnitTestDoctype(UnitTestCase):
-	"""
-	Unit tests for Doctype.
-	Use this class for testing individual functions and methods.
-	"""
-
-	pass
 
 
 class TestDocType(IntegrationTestCase):
@@ -835,6 +826,35 @@ class TestDocType(IntegrationTestCase):
 
 		self.assertEqual(get_format(compressed_dt), "COMPRESSED")
 		self.assertEqual(get_format(dynamic_dt), "DYNAMIC")
+
+	def test_decimal_field_configuration(self):
+		doctype = new_doctype(
+			"Test Decimal Config",
+			fields=[
+				{
+					"fieldname": "decimal_field",
+					"fieldtype": "Currency",
+					"length": 30,
+					"precision": 3,
+				}
+			],
+		).insert(ignore_if_duplicate=True)
+		decimal_field_type = frappe.db.get_column_type(doctype.name, "decimal_field")
+		self.assertIn("(30,3)", decimal_field_type.lower())
+
+	def test_decimal_field_precision_exceeds_length(self):
+		doctype = new_doctype(
+			"Test Decimal Config 2",
+			fields=[
+				{
+					"fieldname": "decimal_field",
+					"fieldtype": "Currency",
+					"length": 10,
+					"precision": 11,
+				}
+			],
+		)
+		self.assertRaises(frappe.ValidationError, doctype.insert)
 
 
 def new_doctype(
