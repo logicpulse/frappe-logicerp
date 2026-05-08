@@ -125,6 +125,7 @@ class User(Document):
 		notifications: DF.Check
 		onboarding_status: DF.SmallText | None
 		phone: DF.Data | None
+		pin: DF.Data | None
 		redirect_url: DF.SmallText | None
 		reset_password_key: DF.Data | None
 		restrict_ip: DF.SmallText | None
@@ -137,11 +138,13 @@ class User(Document):
 		show_absolute_datetime_in_timeline: DF.Check
 		simultaneous_sessions: DF.Int
 		social_logins: DF.Table[UserSocialLogin]
+		terminal_id: DF.Data | None
 		thread_notify: DF.Check
 		time_zone: DF.Autocomplete | None
 		timeline: DF.Check
 		unsubscribed: DF.Check
 		user_emails: DF.Table[UserEmail]
+		user_id: DF.Data | None
 		user_image: DF.AttachImage | None
 		user_type: DF.Link | None
 		username: DF.Data | None

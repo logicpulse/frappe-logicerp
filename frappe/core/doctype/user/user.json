@@ -112,6 +112,11 @@
   "column_break_65",
   "api_secret",
   "onboarding_status",
+  "logic_pos",
+  "user_id",
+  "pin",
+  "column_break_ohqr",
+  "terminal_id",
   "connections_tab",
   "sessions_tab",
   "active_sessions"
@@ -604,7 +609,7 @@
    "unique": 1
   },
   {
-   "description": "<a href=\"https://docs.frappe.io/framework/user/en/api/rest#1-token-based-authentication\" target=\"_blank\">\n  Click here to learn about token-based authentication\n</a>",
+   "description": "<a href=\"https://docs.frappe.io/framework/user/en/api/rest#1-token-based-authentication\" target=\"_blank\" rel=\"noopener noreferrer\">\n  Click here to learn about token-based authentication\n</a>",
    "fieldname": "generate_keys",
    "fieldtype": "Button",
    "label": "Generate Keys",
@@ -857,6 +862,30 @@
    "fieldname": "form_navigation_buttons",
    "fieldtype": "Check",
    "label": "Navigation Buttons"
+  },
+  {
+   "fieldname": "logic_pos",
+   "fieldtype": "Section Break",
+   "label": "LogicPOS"
+  },
+  {
+   "fieldname": "user_id",
+   "fieldtype": "Data",
+   "label": "User Id"
+  },
+  {
+   "fieldname": "pin",
+   "fieldtype": "Data",
+   "label": "Pin"
+  },
+  {
+   "fieldname": "column_break_ohqr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "terminal_id",
+   "fieldtype": "Data",
+   "label": "Terminal Id"
   }
  ],
  "icon": "fa fa-user",
@@ -910,7 +939,7 @@
   }
  ],
  "make_attachments_public": 1,
- "modified": "2026-01-12 16:04:21.542524",
+ "modified": "2026-05-08 16:09:34.021208",
  "modified_by": "Administrator",
  "module": "Core",
  "name": "User",
