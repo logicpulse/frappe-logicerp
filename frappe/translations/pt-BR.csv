@@ -488,7 +488,7 @@ B9,B9
 BCC,CCO
 Back,Voltar
 Back to Desk,De volta à mesa
-Back to Home,De volta para casa
+Back to Home,Voltar para Home
 Back to Login,Voltar ao login
 Background Image,Imagem de fundo
 Background Jobs,Trabalhos em segundo plano
@@ -1806,7 +1806,7 @@ Hide footer signup,Ocultar inscrição no rodapé
 Hide navbar,Ocultar barra de navegação
 High,Alto
 "Hint: Include symbols, numbers and capital letters in the password","Dica: inclua símbolos, números e letras maiúsculas na senha"
-Home,Página inicial
+Home,Home
 Home/Test Folder 1,Pasta inicial/teste 1
 Home/Test Folder 1/Test Folder 3,Início/Pasta de Teste 1/Pasta de Teste 3
 Home/Test Folder 2,Pasta inicial/teste 2
@@ -4027,9 +4027,9 @@ The user can create a new Item but cannot edit existing items.,"O usuário pode 
 The user can delete Draft / Cancelled documents.,O usuário pode excluir documentos Rascunhos/Cancelados.
 The user can export report data.,O usuário pode exportar dados do relatório.
 The user can import new records or update existing data for the document.,O usuário pode importar novos registros ou atualizar dados existentes para o documento.
-The user can select a Customer in Sales Order but cannot open the Customer master.,"O usuário pode selecionar um Cliente no Pedido de Venda, mas não pode abrir o cadastro de Clientes."
+The user can select a Customer in Sales Order but cannot open the Customer master.,"O usuário pode selecionar um Cliente na Ordem de vendas, mas não pode abrir o cadastro de Clientes."
 The user can share document access with another user.,O usuário pode compartilhar o acesso ao documento com outro usuário.
-The user can update a customer or any other fields in an existing Sales Order but cannot create a new Sales Order.,"O usuário pode atualizar um cliente ou qualquer outro campo em um pedido de vendas existente, mas não pode criar um novo pedido de vendas."
+The user can update a customer or any other fields in an existing Sales Order but cannot create a new Sales Order.,"O usuário pode atualizar um cliente ou qualquer outro campo em uma ordem de vendas existente, mas não pode criar uma nova ordem de vendas."
 The user can view Sales Invoices but cannot modify any field values in them.,"O usuário pode visualizar faturas de vendas, mas não pode modificar nenhum valor de campo nelas."
 "The value of the field {0} is too long in the {1} document. To resolve this issue, please reduce the value length or change the {0} field Type to Long Text using customize form, and then try again.","O valor do campo {0} é muito longo no documento {1}. Para resolver esse problema, reduza o comprimento do valor ou altere o tipo do campo {0} para Texto Longo usando o formulário personalizado e tente novamente."
 The value you pasted was {0} characters long. Max allowed characters is {1}.,O valor que você colou tinha {0} caracteres. O máximo de caracteres permitidos é {1}.
