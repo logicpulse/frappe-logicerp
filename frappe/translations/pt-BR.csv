@@ -87,8 +87,8 @@ ${values.doctype_name} has been added to queue for optimization,${values.doctype
 "<div class=""well"">|||    Edit list of Series in the box. Rules:|||    <ul>|||        <li>Each Series Prefix on a new line.</li>|||        <li>Allowed special characters are ""/"" and ""-""</li>|||        <li>|||            Optionally, set the number of digits in the series using dot (.)|||            followed by hashes (#). For example, "".####"" means that the series|||            will have four digits. Default is five digits.|||        </li>|||        <li>|||            You can also use variables in the series name by putting them|||            between (.) dots|||            <br>|||            Supported Variables:|||            <ul>|||                <li><code>.YYYY.</code> - Year in 4 digits</li>|||                <li><code>.YY.</code> - Year in 2 digits</li>|||                <li><code>.MM.</code> - Month</li>|||                <li><code>.DD.</code> - Day of month</li>|||                <li><code>.WW.</code> - Week of the year</li>|||                <li>|||                    <code>.{fieldname}.</code> - fieldname on the document e.g.|||                    <code>branch</code>|||                </li>|||                <li><code>.FY.</code> - Fiscal Year (requires ERPNext to be installed)</li>|||                <li><code>.ABBR.</code> - Company Abbreviation (requires ERPNext to be installed)</li>|||            </ul>|||        </li>|||    </ul>|||    Examples:|||    <ul>|||        <li>INV-</li>|||        <li>INV-10-</li>|||        <li>INVK-</li>|||        <li>INV-.YYYY.-.{branch}.-.MM.-.####</li>|||    </ul>|||</div>|||<br>|||","<div class=""bem"">|||    Edite a lista de séries na caixa. Regras:|||    <ul>|||        <li>Cada prefixo de série em uma nova linha.</li>|||        <li>Os caracteres especiais permitidos são ""/"" e ""-""</li>|||        <li>|||            Opcionalmente, defina o número de dígitos na série usando ponto (.)|||            seguido por hashes (#). Por exemplo, "".####"" significa que a série|||            terá quatro dígitos. O padrão é cinco dígitos.|||        </li>|||        <li>|||            Você também pode usar variáveis ​​no nome da série colocando-as|||            entre (.) pontos|||            <br>|||            Variáveis ​​suportadas:|||            <ul>|||                <li><code>.YYYY.</code> - Ano em 4 dígitos</li>|||                <li><code>.YY.</code> - Ano em 2 dígitos</li>|||                <li><code>.MM.</code> - Mês</li>|||                <li><code>.DD.</code> - Dia do mês</li>|||                <li><code>.WW.</code> - Semana do ano</li>|||                <li>|||                    <code>.{fieldname}.</code> - nome do campo no documento, por exemplo|||                    <code>ramificação</code>|||                </li>|||                <li><code>.FY.</code> - Ano Fiscal (requer a instalação do ERPNext)</li>|||                <li><code>.ABBR.</code> - Abreviatura da empresa (requer instalação do ERPNext)</li>|||            </ul>|||        </li>|||    </ul>|||    Exemplos:|||    <ul>|||        <li>INV-</li>|||        <li>INV-10-</li>|||        <li>INVK-</li>|||        <li>INV-.YYYY.-.{filial}.-.MM.-.####</li>|||    </ul>|||</div>|||<br>|||"
 "<h3>Custom CSS Help</h3>||||||<p>Notes:</p>||||||<ol>|||<li>All field groups (label + value) are set attributes <code>data-fieldtype</code> and <code>data-fieldname</code></li>|||<li>All values are given class <code>value</code></li>|||<li>All Section Breaks are given class <code>section-break</code></li>|||<li>All Column Breaks are given class <code>column-break</code></li>|||</ol>||||||<h4>Examples</h4>||||||<p>1. Left align integers</p>||||||<pre><code>[data-fieldtype=""Int""] .value { text-align: left; }</code></pre>||||||<p>1. Add border to sections except the last section</p>||||||<pre><code>.section-break { padding: 30px 0px; border-bottom: 1px solid #eee; }|||.section-break:last-child { padding-bottom: 0px; border-bottom: 0px;  }</code></pre>|||","<h3>Ajuda CSS personalizada</h3>||||||<p>Notas:</p>||||||<ol>|||<li>Todos os grupos de campos (rótulo + valor) são definidos como atributos <code>data-fieldtype</code> e <code>data-fieldname</code></li>|||<li>Todos os valores recebem classe <code>value</code></li>|||<li>Todas as quebras de seção recebem classe <code>section-break</code></li>|||<li>Todas as quebras de coluna recebem a classe <code>column-break</code></li>|||</ol>||||||<h4>Exemplos</h4>||||||<p>1. Alinhar inteiros à esquerda</p>||||||<pre><code>[data-fieldtype=""Int""] .value { text-align: left; }</code></pre>||||||<p>1. Adicione borda às seções, exceto a última seção</p>||||||<pre><code>.section-break { padding: 30px 0px; borda inferior: 1px sólido #eee; }|||.section-break:last-child { padding-bottom: 0px; borda inferior: 0px;  }</code></pre>|||"
 "<h3>Print Format Help</h3>|||<hr>|||<h4>Introduction</h4>|||<p>Print Formats are rendered on the server side using the Jinja Templating Language. All forms have access to the <code>doc</code> object which contains information about the document that is being formatted. You can also access common utilities via the <code>frappe</code> module.</p>|||<p>For styling, the Boostrap CSS framework is provided and you can enjoy the full range of classes.</p>|||<hr>|||<h4>References</h4>|||<ol>|||	<li><a href=""http://jinja.pocoo.org/docs/templates/"" target=""_blank"">Jinja Templating Language</a></li>|||	<li><a href=""http://getbootstrap.com"" target=""_blank"">Bootstrap CSS Framework</a></li>|||</ol>|||<hr>|||<h4>Example</h4>|||<pre><code>&lt;h3&gt;{{ doc.select_print_heading or ""Invoice"" }}&lt;/h3&gt;|||&lt;div class=""row""&gt;|||	&lt;div class=""col-md-3 text-right""&gt;Customer Name&lt;/div&gt;|||	&lt;div class=""col-md-9""&gt;{{ doc.customer_name }}&lt;/div&gt;|||&lt;/div&gt;|||&lt;div class=""row""&gt;|||	&lt;div class=""col-md-3 text-right""&gt;Date&lt;/div&gt;|||	&lt;div class=""col-md-9""&gt;{{ doc.get_formatted(""invoice_date"") }}&lt;/div&gt;|||&lt;/div&gt;|||&lt;table class=""table table-bordered""&gt;|||	&lt;tbody&gt;|||		&lt;tr&gt;|||			&lt;th&gt;Sr&lt;/th&gt;|||			&lt;th&gt;Item Name&lt;/th&gt;|||			&lt;th&gt;Description&lt;/th&gt;|||			&lt;th class=""text-right""&gt;Qty&lt;/th&gt;|||			&lt;th class=""text-right""&gt;Rate&lt;/th&gt;|||			&lt;th class=""text-right""&gt;Amount&lt;/th&gt;|||		&lt;/tr&gt;|||		{%- for row in doc.items -%}|||		&lt;tr&gt;|||			&lt;td style=""width: 3%;""&gt;{{ row.idx }}&lt;/td&gt;|||			&lt;td style=""width: 20%;""&gt;|||				{{ row.item_name }}|||				{% if row.item_code != row.item_name -%}|||				&lt;br&gt;Item Code: {{ row.item_code}}|||				{%- endif %}|||			&lt;/td&gt;|||			&lt;td style=""width: 37%;""&gt;|||				&lt;div style=""border: 0px;""&gt;{{ row.description }}&lt;/div&gt;&lt;/td&gt;|||			&lt;td style=""width: 10%; text-align: right;""&gt;{{ row.qty }} {{ row.uom or row.stock_uom }}&lt;/td&gt;|||			&lt;td style=""width: 15%; text-align: right;""&gt;{{|||				row.get_formatted(""rate"", doc) }}&lt;/td&gt;|||			&lt;td style=""width: 15%; text-align: right;""&gt;{{|||				row.get_formatted(""amount"", doc) }}&lt;/td&gt;|||		&lt;/tr&gt;|||		{%- endfor -%}|||	&lt;/tbody&gt;|||&lt;/table&gt;</code></pre>|||<hr>|||<h4>Common Functions</h4>|||<table class=""table table-bordered"">|||	<tbody>|||		<tr>|||			<td style=""width: 30%;""><code>doc.get_formatted(""[fieldname]"", [parent_doc])</code></td>|||			<td>Get document value formatted as Date, Currency, etc. Pass parent <code>doc</code> for currency type fields.</td>|||		</tr>|||		<tr>|||			<td style=""width: 30%;""><code>frappe.db.get_value(""[doctype]"", ""[name]"", ""fieldname"")</code></td>|||			<td>Get value from another document.</td>|||		</tr>|||	</tbody>|||</table>|||","<h3>Ajuda sobre formatos de impressão</h3>|||<hr>|||<h4>Introdução</h4>|||<p>Os formatos de impressão são renderizados no lado do servidor usando a Jinja Templating Language. Todos os formulários têm acesso ao objeto <code>doc</code> que contém informações sobre o documento que está sendo formatado. Você também pode acessar utilitários comuns através do módulo <code>frappe</code>.</p>|||<p>Para estilização, a estrutura Boostrap CSS é fornecida e você pode aproveitar toda a gama de classes.</p>|||<hr>|||<h4>Referências</h4>|||<ol>|||	<li><a href=""http://jinja.pocoo.org/docs/templates/"" target=""_blank"">Linguagem de modelagem Jinja</a></li>|||	<li><a href=""http://getbootstrap.com"" target=""_blank"">Estrutura CSS Bootstrap</a></li>|||</ol>|||<hr>|||<h4>Exemplo</h4>|||<pre><code>&lt;h3&gt;{{ doc.select_print_heading ou ""Invoice"" }}&lt;/h3&gt;|||&lt;div class=""linha""&gt;|||	&lt;div class=""col-md-3 text-right""&gt;Nome do cliente&lt;/div&gt;|||	&lt;div class=""col-md-9""&gt;{{ doc.customer_name }}&lt;/div&gt;|||&lt;/div&gt;|||&lt;div class=""row""&gt;|||	&lt;div class=""col-md-3 text-right""&gt;Data&lt;/div&gt;|||	&lt;div class=""col-md-9""&gt;{{ doc.get_formatted(""invoice_date"") }}&lt;/div&gt;|||&lt;/div&gt;|||&lt;table class=""table table-bordered""&gt;|||	&lt;corpo&gt;|||		&lt;tr&gt;|||			&lt;th&gt;Sr&lt;/th&gt;|||			&lt;th&gt;Nome do item&lt;/th&gt;|||			&lt;th&gt;Descrição&lt;/th&gt;|||			&lt;th class=""text-right""&gt;Qtd&lt;/th&gt;|||			&lt;th class=""text-right""&gt;Avaliação&lt;/th&gt;|||			&lt;th class=""text-right""&gt;Valor&lt;/th&gt;|||		&lt;/tr&gt;|||		{%- para linha em doc.items -%}|||		&lt;tr&gt;|||			&lt;td style=""largura: 3%;""&gt;{{ row.idx }}&lt;/td&gt;|||			&lt;td style=""largura: 20%;""&gt;|||				{{ row.item_name }}|||				{% if row.item_code != row.item_name -%}|||				&lt;br&gt;Código do item: {{ row.item_code}}|||				{%-endif %}|||			&lt;/td&gt;|||			&lt;td style=""largura: 37%;""&gt;|||				&lt;div style=""border: 0px;""&gt;{{ row.description }}&lt;/div&gt;&lt;/td&gt;|||			&lt;td style=""largura: 10%; text-align: right;""&gt;{{ row.qty }} {{ row.uom ou row.stock_uom }}&lt;/td&gt;|||			&lt;td style=""largura: 15%; alinhamento de texto: direita;""&gt;{{|||				row.get_formatted(""taxa"", doc) }}&lt;/td&gt;|||			&lt;td style=""largura: 15%; alinhamento de texto: direita;""&gt;{{|||				row.get_formatted(""quantia"", doc) }}&lt;/td&gt;|||		&lt;/tr&gt;|||		{%-endfor -%}|||	&lt;/tbody&gt;|||&lt;/table&gt;</code></pre>|||<hr>|||<h4>Funções comuns</h4>|||<table class=""table table-bordered"">|||	<corpo>|||		<tr>|||			<td style=""largura: 30%;""><code>doc.get_formatted(""[nomedocampo]"", [parent_doc])</code></td>|||			<td>Obtenha o valor do documento formatado como Data, Moeda, etc. Passe o pai <code>doc</code> para campos de tipo de moeda.</td>|||		</tr>|||		<tr>|||			<td style=""largura: 30%;""><code>frappe.db.get_value(""[doctype]"", ""[nome]"", ""nome do campo"")</code></td>|||			<td>Obter valor de outro documento.</td>|||		</tr>|||	</tbody>|||</table>|||"
-"<h4>Default Template</h4>|||<p>Uses <a href=""http://jinja.pocoo.org/docs/templates/"">Jinja Templating</a> and all the fields of Address (including Custom Fields if any) will be available</p>|||<pre><code>{{ address_line1 }}&lt;br&gt;|||{% if address_line2 %}{{ address_line2 }}&lt;br&gt;{% endif -%}|||{{ city }}&lt;br&gt;|||{% if state %}{{ state }}&lt;br&gt;{% endif -%}|||{% if pincode %} PIN:  {{ pincode }}&lt;br&gt;{% endif -%}|||{{ country }}&lt;br&gt;|||{% if phone %}Phone: {{ phone }}&lt;br&gt;{% endif -%}|||{% if fax %}Fax: {{ fax }}&lt;br&gt;{% endif -%}|||{% if email_id %}Email: {{ email_id }}&lt;br&gt;{% endif -%}|||</code></pre>","<h4>Modelo padrão</h4>|||<p>Usa <a href=""http://jinja.pocoo.org/docs/templates/"">Modelo Jinja</a> e todos os campos de endereço (incluindo campos personalizados, se houver) estarão disponíveis</p>|||<pre><code>{{ address_line1 }}&lt;br&gt;|||{% if address_line2 %}{{ address_line2 }}&lt;br&gt;{% endif -%}|||{{ cidade }}&lt;br&gt;|||{% if state %}{{ state }}&lt;br&gt;{% endif -%}|||{% if pincode %} PIN: {{ pincode }}&lt;br&gt;{% endif -%}|||{{ país }}&lt;br&gt;|||{% if phone %}Telefone: {{ phone }}&lt;br&gt;{% endif -%}|||{% if fax %}Fax: {{ fax }}&lt;br&gt;{% endif -%}|||{% if email_id %}E-mail: {{ email_id }}&lt;br&gt;{% endif -%}|||</code></pre>"
-"<h4>Email Reply Example</h4>||||||<pre>Order Overdue||||||Transaction {{ name }} has exceeded Due Date. Please take necessary action.||||||Details||||||- Customer: {{ customer }}|||- Amount: {{ grand_total }}|||</pre>||||||<h4>How to get fieldnames</h4>||||||<p>The fieldnames you can use in your email template are the fields in the document from which you are sending the email. You can find out the fields of any documents via Setup &gt; Customize Form View and selecting the document type (e.g. Sales Invoice)</p>||||||<h4>Templating</h4>||||||<p>Templates are compiled using the Jinja Templating Language. To learn more about Jinja, <a class=""strong"" href=""http://jinja.pocoo.org/docs/dev/templates/"">read this documentation.</a></p>|||","<h4>Exemplo de resposta de e-mail</h4>||||||<pre>Pedido vencido||||||A transação {{ name }} excedeu a data de vencimento. Por favor, tome as medidas necessárias.||||||Detalhes||||||- Cliente: {{ cliente }}|||- Valor: {{ grand_total }}|||</pre>||||||<h4>Como obter nomes de campo</h4>|||||<p>Os nomes de campo que você pode usar em seu modelo de e-mail são os campos no documento do qual você está enviando o e-mail. Você pode descobrir os campos de qualquer documento em Configuração &gt; Personalize a visualização do formulário e selecione o tipo de documento (por exemplo, fatura de vendas)</p>||||||<h4>Modelos</h4>||||||<p>Os modelos são compilados usando a linguagem de modelos Jinja. Para saber mais sobre o Jinja, <a class=""strong"" href=""http://jinja.pocoo.org/docs/dev/templates/"">leia esta documentação.</a></p>|||"
+"<h4>Default Template</h4>|||<p>Uses <a href=""http://jinja.pocoo.org/docs/templates/"">Jinja Templating</a> and all the fields of Address (including Custom Fields if any) will be available</p>|||<pre><code>{{ address_line1 }}&lt;br&gt;|||{% if address_line2 %}{{ address_line2 }}&lt;br&gt;{% endif -%}|||{{ city }}&lt;br&gt;|||{% if state %}{{ state }}&lt;br&gt;{% endif -%}|||{% if pincode %} PIN:  {{ pincode }}&lt;br&gt;{% endif -%}|||{{ country }}&lt;br&gt;|||{% if phone %}Phone: {{ phone }}&lt;br&gt;{% endif -%}|||{% if fax %}Fax: {{ fax }}&lt;br&gt;{% endif -%}|||{% if email_id %}Email: {{ email_id }}&lt;br&gt;{% endif -%}|||</code></pre>","<h4>Modelo padrão</h4>|||<p>Usa <a href=""http://jinja.pocoo.org/docs/templates/"">Modelo Jinja</a> e todos os campos de endereço (incluindo campos personalizados, se houver) estarão disponíveis</p>|||<pre><code>{{ address_line1 }}&lt;br&gt;|||{% if address_line2 %}{{ address_line2 }}&lt;br&gt;{% endif -%}|||{{ cidade }}&lt;br&gt;|||{% if state %}{{ state }}&lt;br&gt;{% endif -%}|||{% if pincode %} PIN: {{ pincode }}&lt;br&gt;{% endif -%}|||{{ país }}&lt;br&gt;|||{% if phone %}Telefone: {{ phone }}&lt;br&gt;{% endif -%}|||{% if fax %}Fax: {{ fax }}&lt;br&gt;{% endif -%}|||{% if email_id %}Email: {{ email_id }}&lt;br&gt;{% endif -%}|||</code></pre>"
+"<h4>Email Reply Example</h4>||||||<pre>Order Overdue||||||Transaction {{ name }} has exceeded Due Date. Please take necessary action.||||||Details||||||- Customer: {{ customer }}|||- Amount: {{ grand_total }}|||</pre>||||||<h4>How to get fieldnames</h4>||||||<p>The fieldnames you can use in your email template are the fields in the document from which you are sending the email. You can find out the fields of any documents via Setup &gt; Customize Form View and selecting the document type (e.g. Sales Invoice)</p>||||||<h4>Templating</h4>||||||<p>Templates are compiled using the Jinja Templating Language. To learn more about Jinja, <a class=""strong"" href=""http://jinja.pocoo.org/docs/dev/templates/"">read this documentation.</a></p>|||","<h4>Exemplo de resposta de Email</h4>||||||<pre>Pedido vencido||||||A transação {{ name }} excedeu a data de vencimento. Por favor, tome as medidas necessárias.||||||Detalhes||||||- Cliente: {{ cliente }}|||- Valor: {{ grand_total }}|||</pre>||||||<h4>Como obter nomes de campo</h4>|||||<p>Os nomes de campo que você pode usar em seu modelo de Email são os campos no documento do qual você está enviando o Email. Você pode descobrir os campos de qualquer documento em Configuração &gt; Personalize a visualização do formulário e selecione o tipo de documento (por exemplo, fatura de vendas)</p>||||||<h4>Modelos</h4>||||||<p>Os modelos são compilados usando a linguagem de modelos Jinja. Para saber mais sobre o Jinja, <a class=""strong"" href=""http://jinja.pocoo.org/docs/dev/templates/"">leia esta documentação.</a></p>|||"
 "<h5 class=""text-muted uppercase"">Or</h5>","<h5 class=""text-muted uppercase"">Ou</h5>"
 <h5>Message Example</h5>||||||<pre>&lt;h3&gt;Order Overdue&lt;/h3&gt;||||||&lt;p&gt;Transaction {{ doc.name }} has exceeded Due Date. Please take necessary action.&lt;/p&gt;||||||&lt;!-- show last comment --&gt;|||{% if comments %}|||Last comment: {{ comments[-1].comment }} by {{ comments[-1].by }}|||{% endif %}||||||&lt;h4&gt;Details&lt;/h4&gt;||||||&lt;ul&gt;|||&lt;li&gt;Customer: {{ doc.customer }}|||&lt;li&gt;Amount: {{ doc.grand_total }}|||&lt;/ul&gt;|||</pre>,"<h5>Exemplo de mensagem</h5>||||||<pre>&lt;h3&gt;Pedido vencido&lt;/h3&gt;||||||&lt;p&gt;A transação {{ doc.name }} excedeu a data de vencimento. Por favor, tome as medidas necessárias.&lt;/p&gt;||||||&lt;!-- mostrar último comentário --&gt;|||{% if comments %}|||Último comentário: {{ comments[-1].comment }} por {{ comments[-1].by }}|||{% endif %}||||||&lt;h4&gt;Detalhes&lt;/h4&gt;||||||&lt;ul&gt;|||&lt;li&gt;Cliente: {{ doc.customer }}|||&lt;li&gt;Valor: {{ doc.grand_total }}|||&lt;/ul&gt;|||</pre>"
 "<p><strong>Condition Examples:</strong></p>|||<pre><code class=""language-python"">doc.status==""Open""<br>doc.due_date==nowdate()<br>doc.total &gt; 40000|||</code></pre>|||","<p><strong>Exemplos de condições:</strong></p>|||<pre><code class=""language-python"">doc.status==""Open""<br>doc.due_date==nowdate()<br>doc.total &gt; 40000|||</code></pre>|||"
@@ -205,7 +205,7 @@ Add to Dashboard,Adicionar ao painel
 Add to Desktop,Adicionar à área de trabalho
 Add to ToDo,Adicionar à tarefa
 Add to table,Adicionar à tabela
-Add to this activity by mailing to {0},Adicione a esta atividade enviando um e-mail para {0}
+Add to this activity by mailing to {0},Adicione a esta atividade enviando um Email para {0}
 Add {0},Adicionar {0}
 Add/Update Filter,Adicionar/atualizar filtro
 Added,Adicionado
@@ -221,7 +221,7 @@ Address Title is mandatory.,O título do endereço é obrigatório.
 Address Type,Tipo de endereço
 Addresses,Endereços
 Addresses And Contacts,Endereços e contatos
-Addresses added here will be used as the Reply-To header for outgoing emails sent from this account.,Os endereços adicionados aqui serão usados ​​como cabeçalho Responder para e-mails enviados desta conta.
+Addresses added here will be used as the Reply-To header for outgoing emails sent from this account.,Os endereços adicionados aqui serão usados ​​como cabeçalho Responder para Emails enviados desta conta.
 "Adds a clear (√ó) button to Link fields, allowing users to quickly remove the selected value.","Adiciona um botão limpar (√ó) aos campos de link, permitindo que os usuários removam rapidamente o valor selecionado."
 Adds a custom client script to a DocType,Adiciona um script de cliente personalizado a um DocType
 Adds a custom field to a DocType,Adiciona um campo personalizado a um DocType
@@ -263,7 +263,7 @@ Allow Print for Draft,Permitir impressão para rascunho
 Allow Sending Usage Data for Improving Applications,Permitir o envio de dados de uso para melhorar aplicativos
 Allow comments,Permitir comentários
 Allow delete,Permitir exclusão
-Allow document creation via Email,Permitir criação de documentos via e-mail
+Allow document creation via Email,Permitir criação de documentos via Email
 Allow editing after submit,Permitir edição após envio
 Allow editing even if the doctype has a workflow set up.||||||Does nothing if a workflow isn't set up.,Permitir edição mesmo que o tipo de documento tenha um fluxo de trabalho configurado.||||||Não faz nada se um fluxo de trabalho não estiver configurado.
 Allow incomplete forms,Permitir formulários incompletos
@@ -273,7 +273,7 @@ Allow print,Permitir impressão
 Allow sending usage data for improving applications,Permitir o envio de dados de uso para melhoria de aplicativos
 Allow user to login only after this hour (0-24),Permitir que o usuário faça login somente após este horário (0-24)
 Allow user to login only before this hour (0-24),Permitir que o usuário faça login somente antes deste horário (0-24)
-"Allow users to log in without a password, using a login link sent to their email","Permitir que os usuários façam login sem senha, usando um link de login enviado para seu e-mail"
+"Allow users to log in without a password, using a login link sent to their email","Permitir que os usuários façam login sem senha, usando um link de login enviado para seu Email"
 Allowed File Extensions,Extensões de arquivo permitidas
 Allowed Modules,Módulos permitidos
 Allowed Public Client Origins,Origens de clientes públicos permitidas
@@ -292,7 +292,7 @@ Allows the user to access reports related to the document.,Permite ao usuário a
 Allows the user to create new documents.,Permite ao usuário criar novos documentos.
 Allows the user to delete documents.,Permite ao usuário excluir documentos.
 Allows the user to edit existing records they have access to.,Permite ao usuário editar registros existentes aos quais tem acesso.
-Allows the user to email from the document.,Permite que o usuário envie e-mail a partir do documento.
+Allows the user to email from the document.,Permite que o usuário envie Email a partir do documento.
 Allows the user to export data from the Report view.,Permite ao usuário exportar dados da visualização Relatório.
 Allows the user to search and see records.,Permite ao usuário pesquisar e ver registros.
 Allows the user to use Data Import tool to create / update records.,Permite ao usuário utilizar a ferramenta Importação de Dados para criar/atualizar registros.
@@ -303,10 +303,10 @@ Already amended as {0},Já alterado como {0}
 Already in the following Users ToDo list:{0},Já está na seguinte lista de tarefas pendentes dos usuários:{0}
 Also adding the dependent currency field {0},Adicionando também o campo de moeda dependente {0}
 Also adding the status dependency field {0},Adicionando também o campo de dependência de status {0}
-Alternative Email ID,ID de e-mail alternativo
+Alternative Email ID,ID de Email alternativo
 Always,Sempre
 Always BCC Address,Sempre endereço CCO
-Always use this email address as sender address,Sempre use este endereço de e-mail como endereço do remetente
+Always use this email address as sender address,Sempre use este endereço de Email como endereço do remetente
 Always use this name as sender name,Sempre use este nome como nome do remetente
 Amend Counter,Alterar contador
 Amended Document Naming Settings,Configurações alteradas de nomenclatura de documentos
@@ -335,9 +335,9 @@ App Name,Nome do aplicativo
 App Name (Client Name),Nome do aplicativo (nome do cliente)
 App not found for module: {0},Aplicativo não encontrado para o módulo: {0}
 App {0} is not installed,O aplicativo {0} não está instalado
-Append Emails to Sent Folder,Anexar e-mails à pasta enviada
+Append Emails to Sent Folder,Anexar Emails à pasta enviada
 Append To can be one of {0},Anexar a pode ser um de {0}
-"Append as communication against this DocType (must have fields: ""Sender"" and ""Subject""). These fields can be defined in the email settings section of the appended doctype.","Anexar como comunicação a este DocType (deve ter os campos: ""Remetente"" e ""Assunto""). Esses campos podem ser definidos na seção de configurações de e-mail do tipo de documento anexado."
+"Append as communication against this DocType (must have fields: ""Sender"" and ""Subject""). These fields can be defined in the email settings section of the appended doctype.","Anexar como comunicação a este DocType (deve ter os campos: ""Remetente"" e ""Assunto""). Esses campos podem ser definidos na seção de configurações de Email do tipo de documento anexado."
 Applicable Document Types,Tipos de documentos aplicáveis
 Applicable For,Aplicável para
 Application is not installed,O aplicativo não está instalado
@@ -383,7 +383,7 @@ Arguments,Argumentos
 Arial,Arial
 "As a best practice, do not assign the same set of permission rule to different Roles. Instead, set multiple Roles to the same User.","Como prática recomendada, não atribua o mesmo conjunto de regras de permissão a funções diferentes. Em vez disso, defina várias funções para o mesmo usuário."
 "As document sharing is disabled, please give them the required permissions before assigning.","Como o compartilhamento de documentos está desativado, conceda a eles as permissões necessárias antes de atribuir."
-"As per your request, your account and data on {0} associated with email {1} has been permanently deleted","De acordo com sua solicitação, sua conta e dados em {0} associados ao e-mail {1} ​​foram excluídos permanentemente"
+"As per your request, your account and data on {0} associated with email {1} has been permanently deleted","De acordo com sua solicitação, sua conta e dados em {0} associados ao Email {1} ​​foram excluídos permanentemente"
 Ask,Perguntar
 Assign,Atribuir
 Assign To,Atribuir a
@@ -429,7 +429,7 @@ Audit Trail,Trilha de auditoria
 Auth URL data should be valid JSON,Os dados do URL de autenticação devem ser JSON válidos
 Authenticate as Service Principal,Autenticar como entidade de serviço
 Authentication,Autenticação
-Authentication failed while receiving emails from Email Account: {0}.,Falha na autenticação ao receber e-mails da conta de e-mail: {0}.
+Authentication failed while receiving emails from Email Account: {0}.,Falha na autenticação ao receber Emails da conta de Email: {0}.
 Authorization,Autorização
 Authorization URI,URI de autorização
 Authorization error for {}.,Erro de autorização para {}.
@@ -437,7 +437,7 @@ Authorize API Access,Autorizar acesso à API
 Authors,Autores
 Authors / Maintainers,Autores / Mantenedores
 Auto,Auto
-Auto Email Report,Relatório automático de e-mail
+Auto Email Report,Relatório automático de Email
 Auto Repeat,Repetição automática
 Auto Repeat Day,Dia de repetição automática
 Auto Repeat Day{0} {1} has been repeated.,Repetição automática O dia{0} {1} foi repetido.
@@ -458,9 +458,9 @@ Autocomplete,Preenchimento automático
 Autoincrement,Incremento automático
 Automated Message,Mensagem Automatizada
 Automatic,Automático
-Automatic Linking can be activated only for one Email Account.,A vinculação automática pode ser ativada apenas para uma conta de e-mail.
+Automatic Linking can be activated only for one Email Account.,A vinculação automática pode ser ativada apenas para uma conta de Email.
 Automatic Linking can be activated only if Incoming is enabled.,A vinculação automática só poderá ser ativada se a opção Entrada estiver ativada.
-Automatic sending of emails is disabled via site config.,O envio automático de e-mails está desabilitado na configuração do site.
+Automatic sending of emails is disabled via site config.,O envio automático de Emails está desabilitado na configuração do site.
 Automatically Assign Documents to Users,Atribuir documentos automaticamente aos usuários
 Automatically applied a filter for recent data. You can disable this behavior from the list view settings.,Aplicou automaticamente um filtro para dados recentes. Você pode desativar esse comportamento nas configurações de exibição de lista.
 Automatically delete account within (hours),Excluir conta automaticamente em (horas)
@@ -496,7 +496,7 @@ Background Jobs Check,Verificação de trabalhos em segundo plano
 Background Jobs Queue,Fila de trabalhos em segundo plano
 Background Print (required for >25 documents),Impressão em segundo plano (necessária para >25 documentos)
 Backup Encryption Key,Chave de criptografia de backup
-Backup job is already queued. You will receive an email with the download link,A tarefa de backup já está na fila. Você receberá um e-mail com o link para download
+Backup job is already queued. You will receive an email with the download link,A tarefa de backup já está na fila. Você receberá um Email com o link para download
 Backups,Cópias de segurança
 Backups (MB),Backups (MB)
 Bad Cron Expression,Expressão de Cron ruim
@@ -655,7 +655,7 @@ Changed at,Alterado em
 Changed by,Alterado por
 Changelog Feed,Feed do registro de alterações
 Changes,Mudanças
-Changing any setting will reflect on all the email accounts associated with this domain.,A alteração de qualquer configuração refletirá em todas as contas de e-mail associadas a este domínio.
+Changing any setting will reflect on all the email accounts associated with this domain.,A alteração de qualquer configuração refletirá em todas as contas de Email associadas a este domínio.
 Changing rounding method on site with data can result in unexpected behaviour.,Alterar o método de arredondamento no local com dados pode resultar em comportamento inesperado.
 Chart,Gráfico
 Chart Type,Tipo de gráfico
@@ -693,7 +693,7 @@ Clear Link,Limpar link
 Clear Logs After (days),Limpar registros após (dias)
 Clear User Permissions,Limpar permissões do usuário
 Clear all filters,Limpar todos os filtros
-Clear the email message and add the template,Limpe a mensagem de e-mail e adicione o modelo
+Clear the email message and add the template,Limpe a mensagem de Email e adicione o modelo
 "Clearing end date, as it cannot be in the past for published pages.","Data de término de compensação, pois não pode estar no passado para páginas publicadas."
 Click On Customize to add your first widget,Clique em Personalizar para adicionar seu primeiro widget
 Click below to get started:,Clique abaixo para começar:
@@ -742,12 +742,12 @@ Columns based on,Colunas baseadas em
 Combination of Grant Type (<code>{0}</code>) and Response Type (<code>{1}</code>) not allowed,Combinação de tipo de concessão (<code>{0}</code>) e tipo de resposta (<code>{1}</code>) não permitida
 Comm10E,Comm10E
 Comment,Comentário
-Comment Email,E-mail de comentário
+Comment Email,Email de comentário
 Comment Type,Tipo de comentário
 Comment can only be edited by the owner,O comentário só pode ser editado pelo proprietário
 Comment publicity can only be updated by the original author or a System Manager.,A publicidade dos comentários só pode ser atualizada pelo autor original ou por um Gerente do Sistema.
 Comments,Comentários
-Comments cannot have links or email addresses,Os comentários não podem conter links ou endereços de e-mail
+Comments cannot have links or email addresses,Os comentários não podem conter links ou endereços de Email
 Commercial Rounding,Arredondamento Comercial
 Committed,Empenhado
 Common names and surnames are easy to guess.,Nomes e sobrenomes comuns são fáceis de adivinhar.
@@ -770,7 +770,7 @@ Completed,Concluído
 Completed By Role,Concluído por função
 Completed By User,Concluído pelo usuário
 Component,Componente
-Compose Email,Escrever e-mail
+Compose Email,Escrever Email
 Compressed,Comprimido
 Condition,Doença
 Condition JSON,Condição JSON
@@ -790,7 +790,7 @@ Confirm Deletion of Account,Confirmar exclusão da conta
 Confirm New Password,Confirme a nova senha
 Confirm Password,Confirme sua senha
 Confirm Request,Confirmar solicitação
-Confirmation Email Template,Modelo de e-mail de confirmação
+Confirmation Email Template,Modelo de Email de confirmação
 Confirmed,Confirmado
 "Congratulations on completing the module setup. If you want to learn more you can refer to the documentation <a target=""_blank"" href=""{0}"">here</a>.","Parabéns por concluir a configuração do módulo. Se quiser saber mais, consulte a documentação <a target=""_blank"" href=""{0}"">aqui</a>."
 Connect to {},Conecte-se a {}
@@ -805,8 +805,8 @@ Console,Console
 Console Log,Registro do console
 Console Logs can not be deleted,Os logs do console não podem ser excluídos
 Constraints,Restrições
-Contact / email not found. Did not add attendee for -<br>{0},Contato/e-mail não encontrado. Não foi adicionado participante para -<br>{0}
-Contact Email,E-mail de contato
+Contact / email not found. Did not add attendee for -<br>{0},Contato/Email não encontrado. Não foi adicionado participante para -<br>{0}
+Contact Email,Email de contato
 Contact Phone,Telefone de contato
 Contact Synced with Google Contacts.,Contato sincronizado com os Contatos do Google.
 Contact Us,Contate-nos
@@ -834,7 +834,7 @@ Core,Essencial
 Core DocTypes cannot be customized.,Os DocTypes principais não podem ser personalizados.
 Core Modules {0} cannot be searched in Global Search.,Os Módulos Principais {0} não podem ser pesquisados ​​na Pesquisa Global.
 Correct version :,Versão correta:
-Could not connect to outgoing email server,Não foi possível conectar-se ao servidor de e-mail de saída
+Could not connect to outgoing email server,Não foi possível conectar-se ao servidor de Email de saída
 Could not find {0},Não foi possível encontrar {0}
 Could not map column {0} to field {1},Não foi possível mapear a coluna {0} para o campo {1}
 Could not parse field: {0},Não foi possível analisar o campo: {0}
@@ -853,13 +853,13 @@ Create Address,Criar endereço
 Create Card,Criar cartão
 Create Chart,Criar gráfico
 Create Child Doctype,Criar tipo de documento filho
-Create Contacts from Incoming Emails,Crie contatos a partir de e-mails recebidos
+Create Contacts from Incoming Emails,Crie contatos a partir de Emails recebidos
 Create Letter Head,Criar cabeçalho de carta
 Create Log,Criar registro
 Create New DocType,Criar novo tipo de documento
 Create New Kanban Board,Criar novo quadro Kanban
 Create Saved Filter,Criar filtro salvo
-Create User Email,Criar e-mail de usuário
+Create User Email,Criar Email de usuário
 Create a New Format,Crie um novo formato
 Create a Reminder,Crie um lembrete
 Create a new ...,Crie um novo...
@@ -987,7 +987,7 @@ Decimal Separator must be a single character,O separador decimal deve ser um ún
 Default Address Template cannot be deleted,O modelo de endereço padrão não pode ser excluído
 Default Amendment Naming,Nomenclatura de alteração padrão
 Default App,Aplicativo padrão
-Default Email Template,Modelo de e-mail padrão
+Default Email Template,Modelo de Email padrão
 Default Inbox,Caixa de entrada padrão
 Default Incoming,Entrada padrão
 Default Naming,Nomenclatura padrão
@@ -1008,7 +1008,7 @@ DefaultValue,Valor padrão
 Defaults Updated,Padrões atualizados
 Defaults to `en`,O padrão é `en`
 Defines actions on states and the next step and allowed roles.,Define ações nos estados e na próxima etapa e funções permitidas.
-Defines how long exported reports sent via email are kept in the system. Older files will be automatically deleted.,Define por quanto tempo os relatórios exportados enviados por e-mail ficam mantidos no sistema. Os arquivos mais antigos serão excluídos automaticamente.
+Defines how long exported reports sent via email are kept in the system. Older files will be automatically deleted.,Define por quanto tempo os relatórios exportados enviados por Email ficam mantidos no sistema. Os arquivos mais antigos serão excluídos automaticamente.
 Defines workflow states and rules for a document.,Define estados e regras de fluxo de trabalho para um documento.
 Delayed,Atrasado
 Delete,Excluir
@@ -1031,7 +1031,7 @@ Delete entire tab with fields,Excluir guia inteira com campos
 Delete row,Excluir linha
 Delete section,Excluir seção
 Delete tab,Excluir guia
-Delete this record to allow sending to this email address,Exclua este registro para permitir o envio para este endereço de e-mail
+Delete this record to allow sending to this email address,Exclua este registro para permitir o envio para este endereço de Email
 Delete {0} item permanently?,Excluir {0} item permanentemente?
 Delete {0} items permanently?,Excluir {0} itens permanentemente?
 Delete {0} rows,Excluir {0} linhas
@@ -1081,7 +1081,7 @@ Disable Product Suggestion,Desativar sugestão de produto
 Disable Report,Desativar relatório
 Disable Scrolling,Desativar rolagem
 Disable Signup for your site,Desative a inscrição para o seu site
-Disable Standard Email Footer,Desativar rodapé de e-mail padrão
+Disable Standard Email Footer,Desativar rodapé de Email padrão
 Disable System Update Notification,Desativar notificação de atualização do sistema
 Disable Username/Password Login,Desativar login com nome de usuário/senha
 Disable signups,Desativar inscrições
@@ -1188,7 +1188,7 @@ Domains,Domínios
 "Don't HTML Encode HTML tags like &lt;script&gt; or just characters like &lt; or &gt;, as they could be intentionally used in this field","Não codifique tags HTML como &lt;script&gt; ou apenas caracteres como &lt; ou &gt;, pois podem ser usados ​​intencionalmente neste campo"
 Don't Import,Não importe
 Don't Override Status,Não substitua o status
-Don't Send Emails,Não envie e-mails
+Don't Send Emails,Não envie Emails
 "Don't encode HTML tags like &lt;script&gt; or just characters like &lt; or &gt;, as they could be intentionally used in this field","Não codifique tags HTML como &lt;script&gt; ou apenas caracteres como &lt; ou &gt;, pois podem ser usados ​​intencionalmente neste campo"
 Don't have an account?,Não tem uma conta?
 Double click to edit label,Clique duas vezes para editar o rótulo
@@ -1228,7 +1228,7 @@ Dynamic Link,Link Dinâmico
 ESC,ESC
 Edit,Editar
 Edit Address in Form,Editar endereço no formulário
-Edit Auto Email Report Settings,Editar configurações de relatório automático por e-mail
+Edit Auto Email Report Settings,Editar configurações de relatório automático por Email
 Edit Chart,Editar gráfico
 Edit Custom Block,Editar bloco personalizado
 Edit Custom HTML,Editar HTML personalizado
@@ -1266,56 +1266,56 @@ Editing {0},Editando {0}
 Eg. smsgateway.com/api/send_sms.cgi,Por exemplo. smsgateway.com/api/send_sms.cgi
 Either key or IP flag is required.,É necessária uma chave ou sinalizador de IP.
 Element Selector,Seletor de elemento
-Email,E-mail
-Email Account,Conta de e-mail
-Email Account Disabled.,Conta de e-mail desativada.
-Email Account Name,Nome da conta de e-mail
-Email Account added multiple times,Conta de e-mail adicionada várias vezes
-Email Account not setup. Please create a new Email Account from Settings > Email Account,Conta de e-mail não configurada. Crie uma nova conta de e-mail em Configurações > Conta de e-mail
-Email Account {0} Disabled,Conta de e-mail {0} desativada
+Email,Email
+Email Account,Conta de Email
+Email Account Disabled.,Conta de Email desativada.
+Email Account Name,Nome da conta de Email
+Email Account added multiple times,Conta de Email adicionada várias vezes
+Email Account not setup. Please create a new Email Account from Settings > Email Account,Conta de Email não configurada. Crie uma nova conta de Email em Configurações > Conta de Email
+Email Account {0} Disabled,Conta de Email {0} desativada
 Email Address,Endereço de email
-Email Address whose Google Contacts are to be synced.,Endereço de e-mail cujos Contatos do Google serão sincronizados.
-Email Addresses,Endereços de e-mail
-Email Domain,Domínio de e-mail
-Email Flag Queue,Fila de sinalização de e-mail
-Email Footer Address,Endereço de rodapé de e-mail
-Email Group,Grupo de e-mail
-Email Group Member,Membro do grupo de e-mail
-Email Header,Cabeçalho do e-mail
-Email ID,ID de e-mail
-Email IDs,IDs de e-mail
-Email Id,ID de e-mail
-Email Queue,Fila de e-mail
-Email Queue Recipient,Destinatário da fila de e-mail
-Email Queue flushing aborted due to too many failures.,A liberação da fila de e-mail foi abortada devido a muitas falhas.
-Email Queue records.,Registros de fila de e-mail.
-Email Reply Help,Ajuda para resposta por e-mail
-Email Retry Limit,Limite de novas tentativas de e-mail
-Email Rule,Regra de e-mail
-Email Sent,E-mail enviado
-Email Sent At,E-mail enviado em
-Email Settings,Configurações de e-mail
-Email Signature,Assinatura de e-mail
-Email Status,Status do e-mail
-Email Sync Option,Opção de sincronização de e-mail
-Email Template,Modelo de e-mail
-Email Threads on Assigned Document,Tópicos de e-mail no documento atribuído
-Email To,E-mail para
-Email Unsubscribe,Cancelar inscrição por e-mail
-Email has been marked as spam,O e-mail foi marcado como spam
-Email has been moved to trash,O e-mail foi movido para a lixeira
-Email is mandatory to create User Email,O e-mail é obrigatório para criar o e-mail do usuário
-Email not sent to {0} (unsubscribed / disabled),E-mail não enviado para {0} (inscrição cancelada/desativada)
-Email not verified with {0},E-mail não verificado com {0}
-Email queue is currently suspended. Resume to automatically send other emails.,A fila de e-mail está suspensa no momento. Retomar para enviar automaticamente outros e-mails.
-Email sending undone,Envio de e-mail desfeito
-Email size {0:.2f} MB exceeds the maximum allowed size of {1:.2f} MB,O tamanho do e-mail {0:.2f} MB excede o tamanho máximo permitido de {1:.2f} MB
-Email undo window is over. Cannot undo email.,A janela de desfazer e-mail terminou. Não é possível desfazer e-mail.
-Emails,E-mails
-Emails Pulled,E-mails extraídos
-Emails are already being pulled from this account.,Os e-mails já estão sendo retirados desta conta.
-Emails are muted,Os e-mails estão silenciados
-Emails will be sent with next possible workflow actions,Os e-mails serão enviados com as próximas ações possíveis do fluxo de trabalho
+Email Address whose Google Contacts are to be synced.,Endereço de Email cujos Contatos do Google serão sincronizados.
+Email Addresses,Endereços de Email
+Email Domain,Domínio de Email
+Email Flag Queue,Fila de sinalização de Email
+Email Footer Address,Endereço de rodapé de Email
+Email Group,Grupo de Email
+Email Group Member,Membro do grupo de Email
+Email Header,Cabeçalho do Email
+Email ID,ID de Email
+Email IDs,IDs de Email
+Email Id,ID de Email
+Email Queue,Fila de Email
+Email Queue Recipient,Destinatário da fila de Email
+Email Queue flushing aborted due to too many failures.,A liberação da fila de Email foi abortada devido a muitas falhas.
+Email Queue records.,Registros de fila de Email.
+Email Reply Help,Ajuda para resposta por Email
+Email Retry Limit,Limite de novas tentativas de Email
+Email Rule,Regra de Email
+Email Sent,Email enviado
+Email Sent At,Email enviado em
+Email Settings,Configurações de Email
+Email Signature,Assinatura de Email
+Email Status,Status do Email
+Email Sync Option,Opção de sincronização de Email
+Email Template,Modelo de Email
+Email Threads on Assigned Document,Tópicos de Email no documento atribuído
+Email To,Email para
+Email Unsubscribe,Cancelar inscrição por Email
+Email has been marked as spam,O Email foi marcado como spam
+Email has been moved to trash,O Email foi movido para a lixeira
+Email is mandatory to create User Email,O Email é obrigatório para criar o Email do usuário
+Email not sent to {0} (unsubscribed / disabled),Email não enviado para {0} (inscrição cancelada/desativada)
+Email not verified with {0},Email não verificado com {0}
+Email queue is currently suspended. Resume to automatically send other emails.,A fila de Email está suspensa no momento. Retomar para enviar automaticamente outros Emails.
+Email sending undone,Envio de Email desfeito
+Email size {0:.2f} MB exceeds the maximum allowed size of {1:.2f} MB,O tamanho do Email {0:.2f} MB excede o tamanho máximo permitido de {1:.2f} MB
+Email undo window is over. Cannot undo email.,A janela de desfazer Email terminou. Não é possível desfazer Email.
+Emails,Emails
+Emails Pulled,Emails extraídos
+Emails are already being pulled from this account.,Os Emails já estão sendo retirados desta conta.
+Emails are muted,Os Emails estão silenciados
+Emails will be sent with next possible workflow actions,Os Emails serão enviados com as próximas ações possíveis do fluxo de trabalho
 Embed code copied,Código incorporado copiado
 Employee Self Service,Autoatendimento para funcionários
 Empty alias is not allowed,Alias ​​vazios não são permitidos
@@ -1325,7 +1325,7 @@ Enable Action Confirmation,Habilitar confirmação de ação
 Enable Address Autocompletion,Ativar preenchimento automático de endereço
 Enable Allow Auto Repeat for the doctype {0} in Customize Form,Ative Permitir repetição automática para o tipo de documento {0} em Personalizar formulário
 Enable Dynamic Client Registration,Habilitar registro dinâmico de cliente
-Enable Email Notifications,Habilitar notificações por e-mail
+Enable Email Notifications,Habilitar notificações por Email
 Enable Google API in Google Settings.,Ative a API do Google nas configurações do Google.
 Enable Google indexing,Ativar indexação do Google
 Enable Incoming,Habilitar entrada
@@ -1344,9 +1344,9 @@ Enable developer mode to create a standard Web Template,Ative o modo de desenvol
 Enable if on click|||opens modal.,Habilite se ao clicar|||abre modal.
 Enable in-app website tracking,Ative o rastreamento de sites no aplicativo
 Enabled Scheduler,Agendador habilitado
-Enabled email inbox for user {0},Caixa de entrada de e-mail ativada para o usuário {0}
+Enabled email inbox for user {0},Caixa de entrada de Email ativada para o usuário {0}
 Enables Calendar and Gantt views.,Ativa visualizações de calendário e Gantt.
-Enabling auto reply on an incoming email account will send automated replies to all the synchronized emails. Do you wish to continue?,Ativar a resposta automática em uma conta de e-mail recebida enviará respostas automáticas a todos os e-mails sincronizados. Você deseja continuar?
+Enabling auto reply on an incoming email account will send automated replies to all the synchronized emails. Do you wish to continue?,Ativar a resposta automática em uma conta de Email recebida enviará respostas automáticas a todos os Emails sincronizados. Você deseja continuar?
 "Enabling this will register your site on a central relay server to send push notifications for all installed apps through Firebase Cloud Messaging. This server only stores user tokens and error logs, and no messages are saved.","Ativar isso registrará seu site em um servidor de retransmissão central para enviar notificações push para todos os aplicativos instalados por meio do Firebase Cloud Messaging. Este servidor armazena apenas tokens de usuário e logs de erros, e nenhuma mensagem é salva."
 Enabling this will submit documents in background,Ativar isso enviará documentos em segundo plano
 Encrypt Backups,Criptografar backups
@@ -1363,7 +1363,7 @@ Enqueued creation of indexes,Criação enfileirada de índices
 Ensure the user and group search paths are correct.,Certifique-se de que os caminhos de pesquisa do usuário e do grupo estejam corretos.
 Enter Client Id and Client Secret in Google Settings.,Insira o ID do cliente e o segredo do cliente nas configurações do Google.
 Enter Code displayed in OTP App.,Insira o código exibido no aplicativo OTP.
-"Enter Email Recipient(s) in the To, CC, or BCC fields","Insira o(s) destinatário(s) de e-mail nos campos Para, CC ou CCO"
+"Enter Email Recipient(s) in the To, CC, or BCC fields","Insira o(s) destinatário(s) de Email nos campos Para, CC ou CCO"
 Enter Form Type,Insira o tipo de formulário
 Enter a name for this {0},Insira um nome para este {0}
 "Enter default value fields (keys) and values. If you add multiple values for a field, the first one will be picked. These defaults are also used to set ""match"" permission rules. To see list of fields, go to ""Customize Form"".","Insira campos de valor padrão (chaves) e valores. Se você adicionar vários valores a um campo, o primeiro será escolhido. Esses padrões também são usados ​​para definir regras de permissão de ""correspondência"". Para ver a lista de campos, vá em ""Personalizar Formulário""."
@@ -1391,7 +1391,7 @@ Error in print format on line {0}: {1},Erro no formato de impressão na linha {0
 Error in {0}.get_list: {1},Erro em {0}.get_list: {1}
 Error parsing nested filters: {0}. {1},Erro ao analisar filtros aninhados: {0}. {1}
 "Error validating ""Ignore User Permissions""","Erro ao validar ""Ignorar permissões do usuário"""
-Error while connecting to email account {0},Erro ao conectar-se à conta de e-mail {0}
+Error while connecting to email account {0},Erro ao conectar-se à conta de Email {0}
 Error while evaluating Notification {0}. Please fix your template.,"Erro ao avaliar a Notificação {0}. Por favor, corrija seu modelo."
 Error {0}: {1},Erro {0}: {1}
 Error: Data missing in table {0},Erro: dados ausentes na tabela {0}
@@ -1455,7 +1455,7 @@ Extra Parameters,Parâmetros extras
 FAILURE,FALHA
 Facebook,Facebook
 Fail,Falhar
-Failed Emails,E-mails com falha
+Failed Emails,Emails com falha
 Failed Job Count,Contagem de trabalhos com falha
 Failed Jobs,Trabalhos com falha
 Failed Logins (Last 30 days),Logins com falha (últimos 30 dias)
@@ -1482,8 +1482,8 @@ Failed to render message: {},Falha ao renderizar a mensagem: {}
 Failed to render subject: {},Falha ao renderizar o assunto: {}
 Failed to request login to Frappe Cloud,Falha ao solicitar login no Frappe Cloud
 Failed to retrieve the list of IMAP folders from the server. Please ensure the mailbox is accessible and the account has permission to list folders.,Falha ao recuperar a lista de pastas IMAP do servidor. Certifique-se de que a caixa de correio esteja acessível e que a conta tenha permissão para listar pastas.
-Failed to send email with subject:,Falha ao enviar e-mail com assunto:
-Failed to send notification email,Falha ao enviar e-mail de notificação
+Failed to send email with subject:,Falha ao enviar Email com assunto:
+Failed to send notification email,Falha ao enviar Email de notificação
 Failed to update global settings,Falha ao atualizar as configurações globais
 Failed while calling API {0},Falha ao chamar a API {0}
 Failing Scheduled Jobs (last 7 days),Falha nos trabalhos agendados (últimos 7 dias)
@@ -1632,7 +1632,7 @@ Format,Formatar
 Fortnightly,Quinzenal
 Forward,Avançar
 Forward Query Parameters,Parâmetros de consulta direta
-Forward To Email Address,Encaminhar para endereço de e-mail
+Forward To Email Address,Encaminhar para endereço de Email
 Frappe,Chocado
 Frappe Blog,Blog Frappé
 Frappe Forum,Fórum Frappé
@@ -1683,7 +1683,7 @@ Get Items,Obter itens
 Get OpenID Configuration,Obtenha a configuração do OpenID
 Get PDF,Obter PDF
 Get a preview of generated names with a series.,Obtenha uma prévia dos nomes gerados com uma série.
-Get notified when an email is received on any of the documents assigned to you.,Seja notificado quando um e-mail for recebido sobre qualquer um dos documentos atribuídos a você.
+Get notified when an email is received on any of the documents assigned to you.,Seja notificado quando um Email for recebido sobre qualquer um dos documentos atribuídos a você.
 Getting Started,Começando
 Git Branch,Ramo Git
 GitHub,GitHub
@@ -1753,7 +1753,7 @@ HTML with jinja support,HTML com suporte a jinja
 Half Day,Meio dia
 Half Yearly,Semestralmente
 Half-yearly,Semestralmente
-Handled Emails,E-mails tratados
+Handled Emails,Emails tratados
 Has  Attachment,Tem anexo
 Has Attachments,Possui anexos
 Has Domain,Tem domínio
@@ -1801,7 +1801,7 @@ Hide Weekends,Ocultar fins de semana
 Hide descendant records of <b>For Value</b>.,Ocultar registros descendentes de <b>For Value</b>.
 Hide details,Ocultar detalhes
 Hide footer,Ocultar rodapé
-Hide footer in auto email reports,Ocultar rodapé em relatórios automáticos por e-mail
+Hide footer in auto email reports,Ocultar rodapé em relatórios automáticos por Email
 Hide footer signup,Ocultar inscrição no rodapé
 Hide navbar,Ocultar barra de navegação
 High,Alto
@@ -1847,7 +1847,7 @@ If Owner,Se proprietário
 "If the user has access to Employee and Report is enabled, they can view Employee-based reports.","Se o usuário tiver acesso a Funcionário e o Relatório estiver habilitado, ele poderá visualizar relatórios baseados em Funcionário."
 "If the user has any role checked, then the user becomes a ""System User"". ""System User"" has access to the desktop","Se o usuário tiver alguma função marcada, ele se tornará um ""Usuário do Sistema"". ""Usuário do sistema"" tem acesso à área de trabalho"
 "If these instructions where not helpful, please add in your suggestions on GitHub Issues.","Se essas instruções não forem úteis, adicione suas sugestões sobre problemas do GitHub."
-"If this email is registered with us, we have sent password reset instructions to it. Please check your inbox.","Se este e-mail estiver registrado conosco, enviamos instruções de redefinição de senha para ele. Por favor, verifique sua caixa de entrada."
+"If this email is registered with us, we have sent password reset instructions to it. Please check your inbox.","Se este Email estiver registrado conosco, enviamos instruções de redefinição de senha para ele. Por favor, verifique sua caixa de entrada."
 "If this was a mistake or you need access again, please reach out to your team.","Se isso foi um erro ou se você precisar acessar novamente, entre em contato com sua equipe."
 "If unchecked, the value will always be re-fetched on save.","Se desmarcado, o valor sempre será buscado novamente ao salvar."
 "If you are updating, please select ""Overwrite"" else existing rows will not be deleted.","Se você estiver atualizando, selecione ""Substituir"", caso contrário as linhas existentes não serão excluídas."
@@ -1878,7 +1878,7 @@ Impersonated by {0},Representado por {0}
 Impersonating {0},Personificando {0}
 Implement `clear_old_logs` method to enable auto error clearing.,Implemente o método `clear_old_logs` para ativar a limpeza automática de erros.
 Import,Importar
-Import Email From,Importar e-mail de
+Import Email From,Importar Email de
 Import Log,Registro de importação
 Import Progress,Progresso da importação
 Import Subscribers,Importar assinantes
@@ -1904,17 +1904,17 @@ Inbox View,Visualização da caixa de entrada
 Include Disabled,Incluir desativado
 Include Name Field,Incluir campo de nome
 Include Theme from Apps,Incluir tema de aplicativos
-Include Web View Link in Email,Incluir link de visualização da Web no e-mail
+Include Web View Link in Email,Incluir link de visualização da Web no Email
 Include filters,Incluir filtros
 Include hidden columns,Incluir colunas ocultas
 Include indentation,Incluir recuo
 "Include symbols, numbers and capital letters in the password","Incluir símbolos, números e letras maiúsculas na senha"
 Incoming,Entrada
 Incoming (POP/IMAP) Settings,Configurações de entrada (POP/IMAP)
-Incoming Emails (Last 7 days),E-mails recebidos (últimos 7 dias)
+Incoming Emails (Last 7 days),Emails recebidos (últimos 7 dias)
 Incoming Server,Servidor de entrada
 Incoming Settings,Configurações de entrada
-Incoming email account not correct,A conta de e-mail recebida não está correta
+Incoming email account not correct,A conta de Email recebida não está correta
 Incomplete Virtual Doctype Implementation,Implementação incompleta do tipo de documento virtual
 Incomplete login details,Detalhes de login incompletos
 Incorrect Configuration,Configuração incorreta
@@ -1948,14 +1948,14 @@ Installed Application,Aplicativo instalado
 Installed Applications,Aplicativos instalados
 Installed Apps,Aplicativos instalados
 Instructions,Instruções
-Instructions Emailed,Instruções enviadas por e-mail
+Instructions Emailed,Instruções enviadas por Email
 Insufficient Permission Level for {0},Nível de permissão insuficiente para {0}
 Insufficient Permission for {0},Permissão insuficiente para {0}
 Insufficient Permissions for deleting Report,Permissões insuficientes para exclusão de relatório
 Insufficient Permissions for editing Report,Permissões insuficientes para edição do relatório
 Insufficient attachment limit,Limite de anexos insuficiente
 Integration Request,Solicitação de Integração
-Integrations can use this field to set email delivery status,As integrações podem usar este campo para definir o status de entrega de e-mail
+Integrations can use this field to set email delivery status,As integrações podem usar este campo para definir o status de entrega de Email
 Inter,Internacional
 Interests,Interesses
 Intermediate,Intermediário
@@ -1974,7 +1974,7 @@ Invalid CSV Format,Formato CSV inválido
 Invalid Code. Please try again.,"Código inválido. Por favor, tente novamente."
 Invalid Condition: {},Condição inválida: {}
 Invalid Credentials,Credenciais inválidas
-Invalid Credentials for Email Account: {0},Credenciais inválidas para conta de e-mail: {0}
+Invalid Credentials for Email Account: {0},Credenciais inválidas para conta de Email: {0}
 Invalid Date,Data inválida
 Invalid DocType,Tipo de documento inválido
 Invalid DocType: {0},Tipo de documento inválido: {0}
@@ -1992,7 +1992,7 @@ Invalid Mail Server. Please rectify and try again.,Servidor de email inválido. 
 Invalid Naming Series: {},Série de nomenclatura inválida: {}
 Invalid Operation,Operação inválida
 Invalid Option,Opção inválida
-Invalid Outgoing Mail Server or Port: {0},Servidor ou porta de saída de e-mail inválido: {0}
+Invalid Outgoing Mail Server or Port: {0},Servidor ou porta de saída de Email inválido: {0}
 Invalid Output Format,Formato de saída inválido
 Invalid Override,Substituição inválida
 Invalid Parameters.,Parâmetros inválidos.
@@ -2084,7 +2084,7 @@ Is Virtual,É virtual
 Is Your Company Address,É o endereço da sua empresa
 Is standard,É padrão
 It is risky to delete this file: {0}. Please contact your System Manager.,É arriscado excluir este arquivo: {0}. Entre em contato com o gerente do sistema.
-It is too late to undo this email. It is already being sent.,É tarde demais para desfazer este e-mail. Já está sendo enviado.
+It is too late to undo this email. It is already being sent.,É tarde demais para desfazer este Email. Já está sendo enviado.
 Item Label,Etiqueta do item
 Item Type,Tipo de item
 Item cannot be added to its own descendants,O item não pode ser adicionado aos seus próprios descendentes
@@ -2127,7 +2127,7 @@ Knowledge Base Editor,Editor da Base de Conhecimento
 L,eu
 LDAP Auth,Autenticação LDAP
 LDAP Custom Settings,Configurações personalizadas de LDAP
-LDAP Email Field,Campo de e-mail LDAP
+LDAP Email Field,Campo de Email LDAP
 LDAP Group Mapping,Mapeamento de grupo LDAP
 LDAP Group Member attribute,Atributo de membro do grupo LDAP
 LDAP Not Installed,LDAP não instalado
@@ -2258,7 +2258,7 @@ Login To {0},Faça login em {0}
 Login Verification Code from {},Código de verificação de login de {}
 Login and view in Browser,Faça login e visualize no navegador
 Login is required to see web form list view. Enable {0} to see list settings,É necessário fazer login para ver a visualização da lista do formulário da web. Ative {0} para ver as configurações da lista
-Login link sent to your email,Link de login enviado para seu e-mail
+Login link sent to your email,Link de login enviado para seu Email
 Login not allowed at this time,Login não permitido neste momento
 Login required,Login necessário
 "Login session expired, refresh page to retry",A sessão de login expirou. Atualize a página para tentar novamente
@@ -2267,11 +2267,11 @@ Login to start a new discussion,Faça login para iniciar uma nova discussão
 Login to view,Faça login para visualizar
 Login to {0},Faça login em {0}
 Login token required,É necessário token de login
-Login with Email Link,Login com link de e-mail
+Login with Email Link,Login com link de Email
 Login with Frappe Cloud,Faça login com Frappe Cloud
 Login with LDAP,Entrar com LDAP
-Login with email link,Login com link de e-mail
-Login with email link expiry (in minutes),Login com expiração do link do e-mail (em minutos)
+Login with email link,Login com link de Email
+Login with email link expiry (in minutes),Login com expiração do link do Email (em minutos)
 Login with username and password is not allowed.,Login com nome de usuário e senha não é permitido.
 Login with {0},Faça login com {0}
 Logo URI,URI do logotipo
@@ -2330,7 +2330,7 @@ Max File Size (MB),Tamanho máximo do arquivo (MB)
 Max Height,Altura máxima
 Max Report Rows,Máximo de linhas do relatório
 Max attachment size,Tamanho máximo do anexo
-Max auto email report per user,Relatório máximo de e-mail automático por usuário
+Max auto email report per user,Relatório máximo de Email automático por usuário
 Max signups allowed per hour,Máximo de inscrições permitidas por hora
 Max width for type Currency is 100px in row {0},A largura máxima do tipo Moeda é 100 px na linha {0}
 Maximum Attachment Limit of {0} has been reached for {1} {2}.,O limite máximo de anexos de {0} foi atingido para {1} {2}.
@@ -2477,8 +2477,8 @@ New Custom Block,Novo bloco personalizado
 New Custom Print Format,Novo formato de impressão personalizado
 New Document Form,Novo formulário de documento
 New Document Shared {0},Novo documento compartilhado {0}
-New Email,Novo e-mail
-New Email Account,Nova conta de e-mail
+New Email,Novo Email
+New Email Account,Nova conta de Email
 New Event,Novo Evento
 New Folder,Nova pasta
 New Kanban Board,Novo quadro Kanban
@@ -2501,7 +2501,7 @@ New Workflow Name,Novo nome do fluxo de trabalho
 New Workspace,Novo espaço de trabalho
 "New line separated list of allowed public client URLs (eg <code>https://frappe.io</code>), or <code>*</code> to accept all.|||<br>|||Public clients are restricted by default.","Nova lista separada por linhas de URLs de clientes públicos permitidos (por exemplo, <code>https://frappe.io</code>), ou <code>*</code> para aceitar todos.|||<br>|||Os clientes públicos são restritos por padrão."
 New line separated list of scope values.,Nova lista de valores de escopo separados por linha.
-"New lines separated list of strings representing ways to contact people responsible for this client, typically email addresses.","Novas linhas separam uma lista de strings que representam formas de entrar em contato com as pessoas responsáveis ​​por esse cliente, normalmente endereços de e-mail."
+"New lines separated list of strings representing ways to contact people responsible for this client, typically email addresses.","Novas linhas separam uma lista de strings que representam formas de entrar em contato com as pessoas responsáveis ​​por esse cliente, normalmente endereços de Email."
 New password cannot be same as old password,A nova senha não pode ser igual à senha antiga
 New updates are available,Novas atualizações estão disponíveis
 New users will have to be manually registered by system managers.,Novos usuários deverão ser cadastrados manualmente pelos gestores do sistema.
@@ -2517,7 +2517,7 @@ Next,Próximo
 Next 14 Days,Próximos 14 dias
 Next 30 Days,Próximos 30 dias
 Next 7 Days,Próximos 7 dias
-Next Action Email Template,Modelo de e-mail de próxima ação
+Next Action Email Template,Modelo de Email de próxima ação
 Next Actions,Próximas ações
 Next Actions HTML,Próximas ações HTML
 Next Document,Próximo documento
@@ -2533,16 +2533,16 @@ No,Não
 No Active Sessions,Nenhuma sessão ativa
 No Data,Sem dados
 No Data...,Sem dados...
-No Email Account,Sem conta de e-mail
-No Email Accounts Assigned,Nenhuma conta de e-mail atribuída
-No Email field found in {0},Nenhum campo de e-mail encontrado em {0}
-No Emails,Sem e-mails
+No Email Account,Sem conta de Email
+No Email Accounts Assigned,Nenhuma conta de Email atribuída
+No Email field found in {0},Nenhum campo de Email encontrado em {0}
+No Emails,Sem Emails
 No Entry for the User {0} found within LDAP!,Nenhuma entrada para o usuário {0} encontrada no LDAP!
 No Filters Set,Nenhum filtro definido
 No Google Calendar Event to sync.,Nenhum evento do Google Agenda para sincronizar.
-No IMAP folders were found on the server. Please verify the email account settings and ensure the mailbox contains folders.,Nenhuma pasta IMAP foi encontrada no servidor. Verifique as configurações da conta de e-mail e certifique-se de que a caixa de correio contenha pastas.
+No IMAP folders were found on the server. Please verify the email account settings and ensure the mailbox contains folders.,Nenhuma pasta IMAP foi encontrada no servidor. Verifique as configurações da conta de Email e certifique-se de que a caixa de correio contenha pastas.
 No Images,Sem imagens
-No LDAP User found for email: {0},Nenhum usuário LDAP encontrado para o e-mail: {0}
+No LDAP User found for email: {0},Nenhum usuário LDAP encontrado para o Email: {0}
 No Label,Sem etiqueta
 No Letterhead,Sem papel timbrado
 No Name Specified for {0},Nenhum nome especificado para {0}
@@ -2578,8 +2578,8 @@ No data to export,Não há dados para exportar
 No data to perform this action,Não há dados para realizar esta ação
 No default Address Template found. Please create a new one from Setup > Printing and Branding > Address Template.,Nenhum modelo de endereço padrão encontrado. Crie um novo em Configuração > Impressão e marca > Modelo de endereço.
 No documents found tagged with {0},Nenhum documento encontrado marcado com {0}
-No email account associated with the User. Please add an account under User > Email Inbox.,Nenhuma conta de e-mail associada ao usuário. Adicione uma conta em Usuário > Caixa de entrada de e-mail.
-No email addresses to invite,Nenhum endereço de e-mail para convidar
+No email account associated with the User. Please add an account under User > Email Inbox.,Nenhuma conta de Email associada ao usuário. Adicione uma conta em Usuário > Caixa de entrada de Email.
+No email addresses to invite,Nenhum endereço de Email para convidar
 No failed logs,Nenhum registro com falha
 "No fields found that can be used as a Kanban Column. Use the Customize Form to add a Custom Field of type ""Select"".","Nenhum campo encontrado que possa ser usado como coluna Kanban. Use o Formulário Personalizado para adicionar um Campo Personalizado do tipo ""Selecionar""."
 No file attached,Nenhum arquivo anexado
@@ -2612,7 +2612,7 @@ No values to show,Não há valores para mostrar
 No {0},Não {0}
 No {0} found,Nenhum {0} encontrado
 No {0} found with matching filters. Clear filters to see all {0}.,Nenhum {0} encontrado com filtros correspondentes. Limpe os filtros para ver todos os {0}.
-No {0} mail,Nenhum e-mail {0}
+No {0} mail,Nenhum Email {0}
 No.,Não.
 Nomatim,O meu nome
 None: End of Workflow,Nenhum: Fim do Fluxo de Trabalho
@@ -2672,10 +2672,10 @@ Notification: customer {0} has no Mobile number set,Notificação: o cliente {0}
 Notification: document {0} has no {1} number set (field: {2}),Notificação: o documento {0} não possui nenhum número {1} definido (campo: {2})
 Notification: user {0} has no Mobile number set,Notificação: o usuário {0} não tem número de celular definido
 Notifications Disabled,Notificações desativadas
-Notifications and bulk mails will be sent from this outgoing server.,Notificações e e-mails em massa serão enviados deste servidor de saída.
+Notifications and bulk mails will be sent from this outgoing server.,Notificações e Emails em massa serão enviados deste servidor de saída.
 Notify Users On Every Login,Notificar usuários em cada login
-Notify by Email,Notificar por e-mail
-Notify by email,Notificar por e-mail
+Notify by Email,Notificar por Email
+Notify by email,Notificar por Email
 Notify users with a popup when they log in,Notificar os usuários com um pop-up quando eles fizerem login
 Now,Agora
 Number Card,Cartão numérico
@@ -2687,7 +2687,7 @@ Number of Queries,Número de consultas
 Number of backups must be greater than zero.,O número de backups deve ser maior que zero.
 Number of columns for a field in a Grid (Total Columns in a grid should be less than 11),Número de colunas para um campo em uma grade (o total de colunas em uma grade deve ser menor que 11)
 Number of columns for a field in a List View or a Grid (Total Columns should be less than 11),Número de colunas para um campo em uma visualização de lista ou grade (o total de colunas deve ser menor que 11)
-Number of days after which the document Web View link shared on email will be expired,Número de dias após os quais o link do documento Web View compartilhado por e-mail expirará
+Number of days after which the document Web View link shared on email will be expired,Número de dias após os quais o link do documento Web View compartilhado por Email expirará
 Number of keys,Número de chaves
 Number of onsite backups,Número de backups no local
 OAuth,OAuth
@@ -2743,7 +2743,7 @@ One Last Step,Um último passo
 One Time Password (OTP) Registration Code from {},Código de registro de senha de uso único (OTP) de {}
 One of,Um dos
 Only 200 inserts allowed in one request,Apenas 200 inserções permitidas em uma solicitação
-Only Administrator can delete Email Queue,Somente o administrador pode excluir a fila de e-mail
+Only Administrator can delete Email Queue,Somente o administrador pode excluir a fila de Email
 Only Administrator can edit,Somente o administrador pode editar
 Only Administrator can save a standard report. Please rename and save.,Somente o administrador pode salvar um relatório padrão. Renomeie e salve.
 Only Administrator is allowed to use Recorder,Somente o administrador tem permissão para usar o gravador
@@ -2761,7 +2761,7 @@ Only reports of type Report Builder can be edited,Somente relatórios do tipo Re
 Only standard DocTypes are allowed to be customized from Customize Form.,Somente DocTypes padrão podem ser personalizados no Formulário Personalizado.
 Only the Administrator can delete a standard DocType.,Somente o Administrador pode excluir um DocType padrão.
 Only the assignee can complete this to-do.,Somente o responsável pode concluir esta tarefa.
-Only {0} emailed reports are allowed per user.,Somente {0} relatórios enviados por e-mail são permitidos por usuário.
+Only {0} emailed reports are allowed per user.,Somente {0} relatórios enviados por Email são permitidos por usuário.
 Oops! Something went wrong.,Ops! Algo deu errado.
 Open,Abrir
 Open Awesomebar,Abra a barra incrível
@@ -2793,7 +2793,7 @@ Option 1,Opção 1
 Option 2,Opção 2
 Option 3,Opção 3
 Option {0} for field {1} is not a child table,A opção {0} para o campo {1} não é uma tabela filha
-Optional: Always send to these ids. Each Email Address on a new row,Opcional: Sempre envie para esses ids. Cada endereço de e-mail em uma nova linha
+Optional: Always send to these ids. Each Email Address on a new row,Opcional: Sempre envie para esses ids. Cada endereço de Email em uma nova linha
 Options,Opções
 Options 'Dynamic Link' type of field must point to another Link Field with options as 'DocType',Opções de campo do tipo 'Link Dinâmico' devem apontar para outro Campo de Link com opções como 'DocType'
 Options for Rating field can range from 3 to 10,As opções para o campo Classificação podem variar de 3 a 10
@@ -2807,10 +2807,10 @@ Orientation,Orientação
 Original,Original
 Original Value,Valor original
 Outgoing (SMTP) Settings,Configurações de saída (SMTP)
-Outgoing Emails (Last 7 days),E-mails enviados (últimos 7 dias)
+Outgoing Emails (Last 7 days),Emails enviados (últimos 7 dias)
 Outgoing Server,Servidor de saída
 Outgoing Settings,Configurações de saída
-Outgoing email account not correct,A conta de e-mail de saída não está correta
+Outgoing email account not correct,A conta de Email de saída não está correta
 Outlook.com,Outlook.com
 Overview,Visão geral
 PATCH,CORREÇÃO
@@ -2824,7 +2824,7 @@ PDF generation failed because of broken image links,A geração do PDF falhou de
 PDF generation may not work as expected.,A geração de PDF pode não funcionar conforme o esperado.
 "PDF printing via ""Raw Print"" is not supported.","A impressão de PDF via ""Raw Print"" não é suportada."
 PID,PID
-POP3 OAuth authentication failed for Email Account {0},Falha na autenticação POP3 OAuth para conta de e-mail {0}
+POP3 OAuth authentication failed for Email Account {0},Falha na autenticação POP3 OAuth para conta de Email {0}
 POST,PUBLICAR
 PUT,COLOCAR
 Package,Pacote
@@ -2876,7 +2876,7 @@ Password cannot be filtered,A senha não pode ser filtrada
 Password changed successfully.,Senha alterada com sucesso.
 Password is required or select Awaiting Password,A senha é obrigatória ou selecione Aguardando senha
 Password is valid. üëç,A senha é válida. üëç
-Password missing in Email Account,Senha faltando na conta de e-mail
+Password missing in Email Account,Senha faltando na conta de Email
 Password not found for {0} {1} {2},Senha não encontrada para {0} {1} {2}
 Password requirements not met,Requisitos de senha não atendidos
 Password set,Conjunto de senha
@@ -2893,7 +2893,7 @@ Path {0} is not within module {1},O caminho {0} não está no módulo {1}
 Path {0} it not a valid path,Caminho {0} não é um caminho válido
 Payload Count,Contagem de carga útil
 Peak Memory Usage,Uso máximo de memória
-Pending Emails,E-mails pendentes
+Pending Emails,Emails pendentes
 Pending Jobs,Trabalhos pendentes
 Pending Verification,Verificação pendente
 Percent,Por cento
@@ -2914,7 +2914,7 @@ Permission Type '{0}' is reserved. Please choose another name.,O tipo de permiss
 Permissions,Permissões
 Permissions Error,Erro de permissões
 Permissions are automatically applied to Standard Reports and searches.,As permissões são aplicadas automaticamente a pesquisas e relatórios padrão.
-"Permissions are set on Roles and Document Types (called DocTypes) by setting rights like Read, Write, Create, Delete, Submit, Cancel, Amend, Report, Import, Export, Print, Email and Set User Permissions.","As permissões são definidas em funções e tipos de documentos (chamados DocTypes) definindo direitos como Ler, Gravar, Criar, Excluir, Enviar, Cancelar, Alterar, Reportar, Importar, Exportar, Imprimir, Enviar por e-mail e Definir permissões do usuário."
+"Permissions are set on Roles and Document Types (called DocTypes) by setting rights like Read, Write, Create, Delete, Submit, Cancel, Amend, Report, Import, Export, Print, Email and Set User Permissions.","As permissões são definidas em funções e tipos de documentos (chamados DocTypes) definindo direitos como Ler, Gravar, Criar, Excluir, Enviar, Cancelar, Alterar, Reportar, Importar, Exportar, Imprimir, Enviar por Email e Definir permissões do usuário."
 Permissions at higher levels are Field Level permissions. All Fields have a Permission Level set against them and the rules defined at that permissions apply to the field. This is useful in case you want to hide or make certain field read-only for certain Roles.,As permissões em níveis superiores são permissões em nível de campo. Todos os campos têm um nível de permissão definido e as regras definidas nessas permissões se aplicam ao campo. Isso é útil caso você queira ocultar ou tornar determinado campo somente leitura para determinadas funções.
 "Permissions at level 0 are Document Level permissions, i.e. they are primary for access to the document.","As permissões no nível 0 são permissões em nível de documento, ou seja, são primárias para acesso ao documento."
 Permissions get applied on Users based on what Roles they are assigned.,As permissões são aplicadas aos usuários com base nas funções atribuídas a eles.
@@ -2931,13 +2931,13 @@ Pink,Rosa
 Placeholder,Espaço reservado
 Places,Lugares
 Plain Text,Texto Simples
-Please Authorize OAuth for Email Account {0},Autorize o OAuth para a conta de e-mail {0}
-Please Authorize OAuth for Email Account {},Autorize o OAuth para conta de e-mail {}
+Please Authorize OAuth for Email Account {0},Autorize o OAuth para a conta de Email {0}
+Please Authorize OAuth for Email Account {},Autorize o OAuth para conta de Email {}
 Please Duplicate this Website Theme to customize.,Duplique este tema do site para personalizar.
 Please Install the ldap3 library via pip to use ldap functionality.,Instale a biblioteca ldap3 via pip para usar a funcionalidade ldap.
 Please Set Chart,"Por favor, defina o gráfico"
 Please Update SMS Settings,Atualize as configurações de SMS
-Please add a subject to your email,Por favor adicione um assunto ao seu e-mail
+Please add a subject to your email,Por favor adicione um assunto ao seu Email
 Please add a valid comment.,Adicione um comentário válido.
 Please adjust filters to include some data,Ajuste os filtros para incluir alguns dados
 Please ask your administrator to verify your sign-up,Peça ao seu administrador para verificar sua inscrição
@@ -2947,9 +2947,9 @@ Please attach an image file to set HTML for Letter Head.,Anexe um arquivo de ima
 Please attach the package,Anexe o pacote
 Please check the filter values set for Dashboard Chart: {},Verifique os valores de filtro definidos para o gráfico do painel: {}
 "Please check the value of ""Fetch From"" set for field {0}","Verifique o valor de ""Buscar de"" definido para o campo {0}"
-Please check your email for verification,Verifique seu e-mail para verificação
-Please check your email login credentials.,Verifique suas credenciais de login de e-mail.
-Please check your registered email address for instructions on how to proceed. Do not close this window as you will have to return to it.,"Verifique seu endereço de e-mail registrado para obter instruções sobre como proceder. Não feche esta janela, pois você terá que retornar a ela."
+Please check your email for verification,Verifique seu Email para verificação
+Please check your email login credentials.,Verifique suas credenciais de login de Email.
+Please check your registered email address for instructions on how to proceed. Do not close this window as you will have to return to it.,"Verifique seu endereço de Email registrado para obter instruções sobre como proceder. Não feche esta janela, pois você terá que retornar a ela."
 Please click Edit on the Workspace for best results,Clique em Editar na área de trabalho para obter melhores resultados
 "Please click on 'Export Errored Rows', fix the errors and import again.","Clique em 'Exportar linhas com erros', corrija os erros e importe novamente."
 Please click on the following link and follow the instructions on the page. {0},Clique no link a seguir e siga as instruções da página. {0}
@@ -2961,11 +2961,11 @@ Please create chart first,"Por favor, crie o gráfico primeiro"
 Please delete the field from {0} or add the required doctype.,Exclua o campo de {0} ou adicione o tipo de documento necessário.
 Please do not change the template headings.,"Por favor, não altere os títulos do modelo."
 Please duplicate this to make changes,Duplique isso para fazer alterações
-Please enable atleast one Social Login Key or LDAP or Login With Email Link before disabling username/password based login.,Ative pelo menos uma chave de login social ou LDAP ou link de login com e-mail antes de desativar o login baseado em nome de usuário/senha.
+Please enable atleast one Social Login Key or LDAP or Login With Email Link before disabling username/password based login.,Ative pelo menos uma chave de login social ou LDAP ou link de login com Email antes de desativar o login baseado em nome de usuário/senha.
 Please enable pop-ups,Ative os pop-ups
 Please enable pop-ups in your browser,Ative os pop-ups no seu navegador
 Please enable {} before continuing.,Ative {} antes de continuar.
-Please ensure that your profile has an email address,Certifique-se de que seu perfil tenha um endereço de e-mail
+Please ensure that your profile has an email address,Certifique-se de que seu perfil tenha um endereço de Email
 Please enter Access Token URL,Insira o URL do token de acesso
 Please enter Authorize URL,Insira o URL de autorização
 Please enter Base URL,Insira o URL base
@@ -2973,8 +2973,8 @@ Please enter Client ID before social login is enabled,Insira o ID do cliente ant
 Please enter Client Secret before social login is enabled,Insira o segredo do cliente antes que o login social seja ativado
 Please enter OpenID Configuration URL,Insira o URL de configuração do OpenID
 Please enter Redirect URL,Insira o URL de redirecionamento
-Please enter a valid email address.,Insira um endereço de e-mail válido.
-Please enter both your email and message so that we can get back to you. Thanks!,"Por favor, insira seu e-mail e mensagem para que possamos entrar em contato com você. Obrigado!"
+Please enter a valid email address.,Insira um endereço de Email válido.
+Please enter both your email and message so that we can get back to you. Thanks!,"Por favor, insira seu Email e mensagem para que possamos entrar em contato com você. Obrigado!"
 Please enter the password,Por favor digite a senha
 Please enter the password for: <b>{0}</b>,Digite a senha de: <b>{0}</b>
 Please enter valid mobile nos,Insira números de celular válidos
@@ -3007,7 +3007,7 @@ Please select prefix first,Selecione o prefixo primeiro
 Please select the Document Type.,Selecione o tipo de documento.
 Please select the LDAP Directory being used,Selecione o diretório LDAP que está sendo usado
 Please select {0},Selecione {0}
-Please set Email Address,"Por favor, defina o endereço de e-mail"
+Please set Email Address,"Por favor, defina o endereço de Email"
 Please set a printer mapping for this print format in the Printer Settings,Defina um mapeamento de impressora para este formato de impressão nas Configurações da impressora
 Please set filters,Defina filtros
 Please set filters value in Report Filter table.,Defina o valor dos filtros na tabela Filtro de Relatório.
@@ -3016,8 +3016,8 @@ Please set the following documents in this Dashboard as standard first.,Defina p
 Please set the series to be used.,"Por favor, defina a série a ser usada."
 "Please setup SMS before setting it as an authentication method, via SMS Settings","Configure o SMS antes de defini-lo como método de autenticação, através de Configurações de SMS"
 Please setup a message first,Configure uma mensagem primeiro
-Please setup default outgoing Email Account from Settings > Email Account,Configure a conta de e-mail de saída padrão em Configurações > Conta de e-mail
-Please setup default outgoing Email Account from Tools > Email Account,Configure a conta de e-mail de saída padrão em Ferramentas > Conta de e-mail
+Please setup default outgoing Email Account from Settings > Email Account,Configure a conta de Email de saída padrão em Configurações > Conta de Email
+Please setup default outgoing Email Account from Tools > Email Account,Configure a conta de Email de saída padrão em Ferramentas > Conta de Email
 Please specify,Por favor especifique
 Please specify a valid parent DocType for {0},Especifique um DocType pai válido para {0}
 Please specify at least 10 minutes due to the trigger cadence of the scheduler,Especifique pelo menos 10 minutos devido à cadência de acionamento do agendador
@@ -3056,7 +3056,7 @@ Prepared Report Analytics,Análise de relatório preparado
 Prepared Report User,Usuário de relatório preparado
 Prepared report render failed,Falha na renderização do relatório preparado
 Preparing Report,Preparando Relatório
-Prepend the template to the email message,Anexe o modelo à mensagem de e-mail
+Prepend the template to the email message,Anexe o modelo à mensagem de Email
 Press Alt Key to trigger additional shortcuts in Menu and Sidebar,Pressione a tecla Alt para acionar atalhos adicionais no menu e na barra lateral
 Press Enter to save,Pressione Enter para salvar
 Preview,Visualização
@@ -3070,7 +3070,7 @@ Previous Document,Documento Anterior
 Previous Submission,Envio Anterior
 Primary Address,Endereço principal
 Primary Contact,Contato principal
-Primary Email,E-mail principal
+Primary Email,Email principal
 Primary Mobile,Celular principal
 Primary Phone,Telefone principal
 Primary key of doctype {0} can not be changed as there are existing values.,A chave primária do tipo de documento {0} não pode ser alterada porque existem valores existentes.
@@ -3120,16 +3120,16 @@ Public Policy URL must start with https://,O URL da política pública deve come
 Publish,Publicar
 Published,Publicado
 Publishing Dates,Datas de publicação
-Pull Emails,Extrair e-mails
+Pull Emails,Extrair Emails
 Pull from Google Contacts,Extrair dos Contatos do Google
-Pulling emails...,Extraindo e-mails...
+Pulling emails...,Extraindo Emails...
 Purchase Manager,Gerente de compras
 Purchase Master Manager,Gerente mestre de compras
 Purchase User,Usuário de compra
 Purple,Roxo
 Push Notification Settings,Configurações de notificação push
 Put on Hold,Colocar em espera
-Python,Pitão
+Python,Python
 QR Code,Código QR
 QR Code for Login Verification,Código QR para verificação de login
 QZ Tray Connection Active!,Conexão da bandeja QZ ativa!
@@ -3150,7 +3150,7 @@ Queue(s),Filas
 Queued At,Na fila em
 Queued By,Na fila por
 Queued for Submission. You can track the progress over {0}.,Na fila para envio. Você pode acompanhar o progresso em {0}.
-Queued for backup. You will receive an email with the download link,Na fila para backup. Você receberá um e-mail com o link para download
+Queued for backup. You will receive an email with the download link,Na fila para backup. Você receberá um Email com o link para download
 Queues,Caudas
 Queuing {0} for Submission,Enfileirando {0} para envio
 Quick Help for Setting Permissions,Ajuda rápida para definir permissões
@@ -3162,12 +3162,12 @@ RQ Worker,Trabalhador RQ
 Random,aleatório
 Range,Faixa
 Rate Limiting,Limitação de taxa
-Rate limit for email link login,Limite de taxa para login com link de e-mail
+Rate limit for email link login,Limite de taxa para login com link de Email
 Rating,Avaliação
 Raw Commands,Comandos brutos
-Raw Email,E-mail bruto
-Raw HTML can be used only with Email Templates having 'Use HTML' checked. Proceeding with plain text email.,HTML bruto pode ser usado apenas com modelos de e-mail com a opção 'Usar HTML' marcada. Continuando com e-mail de texto simples.
-"Raw HTML emails are rendered as complete Jinja templates. Otherwise, emails are wrapped in the standard.html email template, which inserts brand_logo, header and footer.","E-mails HTML brutos são renderizados como modelos Jinja completos. Caso contrário, os e-mails serão agrupados no modelo de e-mail standard.html, que insere brand_logo, cabeçalho e rodapé."
+Raw Email,Email bruto
+Raw HTML can be used only with Email Templates having 'Use HTML' checked. Proceeding with plain text email.,HTML bruto pode ser usado apenas com modelos de Email com a opção 'Usar HTML' marcada. Continuando com Email de texto simples.
+"Raw HTML emails are rendered as complete Jinja templates. Otherwise, emails are wrapped in the standard.html email template, which inserts brand_logo, header and footer.","Emails HTML brutos são renderizados como modelos Jinja completos. Caso contrário, os Emails serão agrupados no modelo de Email standard.html, que insere brand_logo, cabeçalho e rodapé."
 Raw Printing,Impressão bruta
 Raw Printing Setting,Configuração de impressão bruta
 Raw Printing Settings,Configurações de impressão bruta
@@ -3279,7 +3279,7 @@ Replication completed.,Replicação concluída.
 Replied,Respondeu
 Reply All,Responder a todos
 Reply To Address,Responder ao endereço
-Reply To email is required,Responder ao e-mail é obrigatório
+Reply To email is required,Responder ao Email é obrigatório
 Reply-To Addresses,Endereços de resposta
 Report,Relatório
 Report Builder,Construtor de relatórios
@@ -3559,8 +3559,8 @@ Select a Brand Image first.,Selecione primeiro uma imagem de marca.
 Select a DocType to make a new format,Selecione um DocType para criar um novo formato
 Select a field to edit its properties.,Selecione um campo para editar suas propriedades.
 Select a group {0} first.,Selecione um grupo {0} primeiro.
-Select a valid Sender Field for creating documents from Email,Selecione um campo de remetente válido para criar documentos de e-mail
-Select a valid Subject field for creating documents from Email,Selecione um campo Assunto válido para criar documentos de e-mail
+Select a valid Sender Field for creating documents from Email,Selecione um campo de remetente válido para criar documentos de Email
+Select a valid Subject field for creating documents from Email,Selecione um campo Assunto válido para criar documentos de Email
 Select an Image,Selecione uma imagem
 Select an existing format to edit or start a new format.,Selecione um formato existente para editar ou iniciar um novo formato.
 Select an image of approx width 150px with a transparent background for best results.,Selecione uma imagem de aproximadamente 150px de largura com fundo transparente para obter melhores resultados.
@@ -3577,25 +3577,25 @@ Self approval is not allowed,A autoaprovação não é permitida
 Send,Enviar
 Send <b>at the earliest</b> this number of minutes before or after the reference datetime. The actual sending may be delayed by up to 5 minutes due to the scheduler's trigger cadence.,Envie <b>no mínimo</b> esse número de minutos antes ou depois da data e hora de referência. O envio real pode ser atrasado em até 5 minutos devido à cadência de disparo do agendador.
 Send As Raw HTML,Enviar como HTML bruto
-Send Email Alert,Enviar alerta por e-mail
-Send Email On State,Enviar e-mail no estado
-Send Email Print Attachments as PDF (Recommended),Enviar anexos de impressão por e-mail como PDF (recomendado)
-Send Email To Creator,Enviar e-mail para o criador
-Send Me A Copy of Outgoing Emails,Envie-me uma cópia dos e-mails enviados
-Send Notifications For Email Threads,Enviar notificações para tópicos de e-mail
+Send Email Alert,Enviar alerta por Email
+Send Email On State,Enviar Email no estado
+Send Email Print Attachments as PDF (Recommended),Enviar anexos de impressão por Email como PDF (recomendado)
+Send Email To Creator,Enviar Email para o criador
+Send Me A Copy of Outgoing Emails,Envie-me uma cópia dos Emails enviados
+Send Notifications For Email Threads,Enviar notificações para tópicos de Email
 Send Now,Enviar agora
 Send Read Receipt,Enviar recibo de leitura
-Send Welcome Email,Enviar e-mail de boas-vindas
+Send Welcome Email,Enviar Email de boas-vindas
 Send alert if datetime matches this field's value,Enviar alerta se a data e hora corresponder ao valor deste campo
-Send an email reminder in the morning,Envie um lembrete por e-mail pela manhã
-Send email when document transitions to the state.,Enviar e-mail quando o documento for transferido para o estado.
-Send enquiries to this email address,Envie perguntas para este endereço de e-mail
+Send an email reminder in the morning,Envie um lembrete por Email pela manhã
+Send email when document transitions to the state.,Enviar Email quando o documento for transferido para o estado.
+Send enquiries to this email address,Envie perguntas para este endereço de Email
 Send login link,Enviar link de login
 Send me a copy,Envie-me uma cópia
-Send unsubscribe message in email,Enviar mensagem de cancelamento de inscrição por e-mail
+Send unsubscribe message in email,Enviar mensagem de cancelamento de inscrição por Email
 Sender,Remetente
-Sender Email,E-mail do remetente
-Sender Email Field,Campo de e-mail do remetente
+Sender Email,Email do remetente
+Sender Email Field,Campo de Email do remetente
 Sender Field should have Email in options,O campo do remetente deve ter Email nas opções
 Sender Name,Nome do remetente
 Sender Name Field,Campo Nome do Remetente
@@ -3605,7 +3605,7 @@ Sent,Enviado
 Sent Folder Name,Nome da pasta enviada
 Sent On,Enviado
 Sent To,Enviado para
-Sent/Received Email,E-mail enviado/recebido
+Sent/Received Email,Email enviado/recebido
 Sequence Id,ID de sequência
 Series Updated for {},Série atualizada para {}
 Series counter for {} updated to {} successfully,Contador de série para {} atualizado para {} com sucesso
@@ -3666,7 +3666,7 @@ Setup,Configurar
 Setup > Customize Form,Configuração > Personalizar formulário
 Setup > User,Configuração > Usuário
 Setup > User Permissions,Configuração > Permissões do usuário
-Setup Auto Email,Configurar e-mail automático
+Setup Auto Email,Configurar Email automático
 Setup Complete,Configuração concluída
 Setup Series for transactions,Série de configuração para transações
 Setup Wizard,Assistente de configuração
@@ -3843,7 +3843,7 @@ Statistics,Estatísticas
 Stats,Estatísticas
 Status,Status
 Status Updated,Status atualizado
-Status Updated. The email will be picked up in the next scheduled run.,Status atualizado. O e-mail será coletado na próxima execução agendada.
+Status Updated. The email will be picked up in the next scheduled run.,Status atualizado. O Email será coletado na próxima execução agendada.
 Status: {0},Status: {0}
 Steps to verify your login,Etapas para verificar seu login
 Sticky,Pegajoso
@@ -3966,7 +3966,7 @@ Text Content,Conteúdo de texto
 Thank you,Obrigado
 Thank you for reaching out to us. We will get back to you at the earliest.|||||||||Your query:||||||{0},Obrigado por entrar em contato conosco. Entraremos em contato com você o mais breve possível.|||||||||Sua consulta:||||||{0}
 Thank you for spending your valuable time to fill this form,Obrigado por gastar seu valioso tempo preenchendo este formulário
-Thank you for your email,Obrigado pelo seu e-mail
+Thank you for your email,Obrigado pelo seu Email
 Thank you for your feedback!,Obrigado pelo seu feedback!
 Thank you for your message,Obrigado pela sua mensagem
 Thanks,Obrigado
@@ -3987,13 +3987,13 @@ The changes have been reverted.,As alterações foram revertidas.
 The column {0} has {1} different date formats. Automatically setting {2} as the default format as it is the most common. Please change other values in this column to this format.,"A coluna {0} possui {1} formatos de data diferentes. Definir automaticamente {2} como formato padrão, pois é o mais comum. Altere outros valores nesta coluna para este formato."
 The comment cannot be empty,O comentário não pode ficar vazio
 The configured SMTP server does not support DSN (Delivery Status Notification).,O servidor SMTP configurado não suporta DSN (Delivery Status Notification).
-The contents of this email are strictly confidential. Please do not forward this email to anyone.,"O conteúdo deste e-mail é estritamente confidencial. Por favor, não encaminhe este e-mail para ninguém."
+The contents of this email are strictly confidential. Please do not forward this email to anyone.,"O conteúdo deste Email é estritamente confidencial. Por favor, não encaminhe este Email para ninguém."
 The count shown is an estimated count. Click here to see the accurate count.,A contagem mostrada é uma contagem estimada. Clique aqui para ver a contagem precisa.
 The country's ISO 3166 ALPHA-2 code.,O código ISO 3166 ALPHA-2 do país.
 The document could not be correctly assigned,O documento não pôde ser atribuído corretamente
 The document has been assigned to {0},O documento foi atribuído a {0}
 "The document type selected is a child table, so the parent document type is required.","O tipo de documento selecionado é uma tabela filha, portanto o tipo de documento pai é obrigatório."
-The email button is enabled for the user in the document.,O botão de e-mail está habilitado para o usuário no documento.
+The email button is enabled for the user in the document.,O botão de Email está habilitado para o usuário no documento.
 The field {0} in {1} does not allow ignoring user permissions,O campo {0} em {1} não permite ignorar as permissões do usuário
 The field {0} in {1} links to {2} and not {3},O campo {0} em {1} está vinculado a {2} e não a {3}
 The field {0} is mandatory,O campo {0} é obrigatório
@@ -4053,7 +4053,7 @@ There was an error building this page,Ocorreu um erro ao criar esta página
 There was an error saving filters,Ocorreu um erro ao salvar os filtros
 There were errors,Houve erros
 There were errors while creating the document. Please try again.,"Ocorreram erros durante a criação do documento. Por favor, tente novamente."
-There were errors while sending email. Please try again.,"Ocorreram erros ao enviar e-mail. Por favor, tente novamente."
+There were errors while sending email. Please try again.,"Ocorreram erros ao enviar Email. Por favor, tente novamente."
 "There were some errors setting the name, please contact the administrator","Ocorreram alguns erros ao definir o nome, entre em contato com o administrador"
 These announcements will appear inside a dismissible alert below the Navbar.,Esses anúncios aparecerão em um alerta descartável abaixo da barra de navegação.
 "These fields are used to provide resource server metadata to clients querying the ""well known protected resource"" end point.","Esses campos são usados ​​para fornecer metadados do servidor de recursos aos clientes que consultam o ponto final do ""recurso protegido bem conhecido""."
@@ -4070,11 +4070,11 @@ This doctype has no orphan fields to trim,Este tipo de documento não possui cam
 "This doctype has pending migrations, run 'bench migrate' before modifying the doctype to avoid losing changes.","Este tipo de documento tem migrações pendentes, execute 'bench Migrate' antes de modificar o tipo de documento para evitar a perda de alterações."
 This document can not be deleted right now as it's being modified by another user. Please try again after some time.,"Este documento não pode ser excluído agora porque está sendo modificado por outro usuário. Por favor, tente novamente depois de algum tempo."
 This document has already been queued for submission. You can track the progress over {0}.,Este documento já está na fila para envio. Você pode acompanhar o progresso em {0}.
-This document has been modified after the email was sent.,Este documento foi modificado após o envio do e-mail.
+This document has been modified after the email was sent.,Este documento foi modificado após o envio do Email.
 This document has unsaved changes which might not appear in final PDF. <br> Consider saving the document before printing.,Este documento contém alterações não salvas que podem não aparecer no PDF final. <br> Considere salvar o documento antes de imprimir.
 "This document is already amended, you cannot ammend it again","Este documento já foi alterado, você não pode alterá-lo novamente"
 This document is currently locked and queued for execution. Please try again after some time.,"Este documento está atualmente bloqueado e na fila para execução. Por favor, tente novamente depois de algum tempo."
-This email is autogenerated,Este e-mail é gerado automaticamente
+This email is autogenerated,Este Email é gerado automaticamente
 This feature can not be used as dependencies are missing.|||				Please contact your system manager to enable this by installing pycups!,Este recurso não pode ser usado porque faltam dependências.|||				Entre em contato com o gerente do sistema para habilitar isso instalando pycups!
 This feature is brand new and still experimental,Este recurso é totalmente novo e ainda experimental
 This field will appear only if the fieldname defined here has value OR the rules are true (examples):|||myfield|||eval:doc.myfield=='My Value'|||eval:doc.age&gt;18,Este campo aparecerá apenas se o nome do campo definido aqui tiver valor OU as regras forem verdadeiras (exemplos):|||myfield|||eval:doc.myfield=='My Value'|||eval:doc.age&gt;18
@@ -4182,7 +4182,7 @@ Total,Total
 Total Background Workers,Total de trabalhadores em segundo plano
 Total Errors (last 1 day),Total de erros (último 1 dia)
 Total Images,Total de imagens
-Total Outgoing Emails,Total de e-mails enviados
+Total Outgoing Emails,Total de Emails enviados
 Total Users,Total de usuários
 Total Working Time,Tempo total de trabalho
 Total:,Total:
@@ -4190,9 +4190,9 @@ Totals,Totais
 Totals Row,Linha de totais
 Trace ID,ID de rastreamento
 Traceback,Rastreamento
-Track Email Status,Rastrear status de e-mail
+Track Email Status,Rastrear status de Email
 Track Steps,Rastrear etapas
-"Track if your email has been opened by the recipient.|||<br>|||Note: If you're sending to multiple recipients, even if 1 recipient reads the email, it'll be considered ""Opened""","Acompanhe se o seu e-mail foi aberto pelo destinatário.|||<br>|||Observação: se você estiver enviando para vários destinatários, mesmo que um destinatário leia o e-mail, ele será considerado ""Aberto"""
+"Track if your email has been opened by the recipient.|||<br>|||Note: If you're sending to multiple recipients, even if 1 recipient reads the email, it'll be considered ""Opened""","Acompanhe se o seu Email foi aberto pelo destinatário.|||<br>|||Observação: se você estiver enviando para vários destinatários, mesmo que um destinatário leia o Email, ele será considerado ""Aberto"""
 Track milestones for any document,Acompanhe marcos de qualquer documento
 Tracking URL generated and copied to clipboard,URL de rastreamento gerado e copiado para a área de transferência
 Transition Properties,Propriedades de transição
@@ -4248,7 +4248,7 @@ Unable to load camera.,Não foi possível carregar a câmera.
 Unable to load: {0},Não foi possível carregar: {0}
 Unable to open attached file. Did you export it as CSV?,Não foi possível abrir o arquivo anexado. Você exportou como CSV?
 Unable to read file format for {0},Não foi possível ler o formato de arquivo de {0}
-Unable to send mail because of a missing email account. Please setup default Email Account from Settings > Email Account,Não é possível enviar e-mail devido a uma conta de e-mail ausente. Configure a conta de e-mail padrão em Configurações > Conta de e-mail
+Unable to send mail because of a missing email account. Please setup default Email Account from Settings > Email Account,Não é possível enviar Email devido a uma conta de Email ausente. Configure a conta de Email padrão em Configurações > Conta de Email
 Unable to update event,Não foi possível atualizar o evento
 Unable to write file format for {0},Não foi possível gravar o formato de arquivo para {0}
 Uncaught Exception,Exceção não detectada
@@ -4256,8 +4256,8 @@ Unchanged,Inalterado
 Undo,Desfazer
 Undo last action,Desfazer a última ação
 Unfollow,Deixar de seguir
-Unhandled Email,E-mail não tratado
-Unhandled Emails,E-mails não tratados
+Unhandled Email,Email não tratado
+Unhandled Emails,Emails não tratados
 Unique ID assigned by the client developer used to identify the client software to be dynamically registered.|||<br>|||<b>Should remain same</b> across multiple versions or updates of the software.,ID exclusivo atribuído pelo desenvolvedor do cliente usado para identificar o software cliente a ser registrado dinamicamente.|||<br>|||<b>Deve permanecer o mesmo</b> em várias versões ou atualizações do software.
 Unknown Column: {0},Coluna desconhecida: {0}
 Unknown Rounding Method: {},Método de arredondamento desconhecido: {}
@@ -4293,7 +4293,7 @@ Updated To A New Version u{1F389},Atualizado para uma nova versão u{1F389}
 Updated To A New Version üéâ,Atualizado para uma nova versão üéâ
 Updated successfully,Atualizado com sucesso
 Updating,Atualizando
-Updating Email Queue Statuses. The emails will be picked up in the next scheduled run.,Atualizando status da fila de e-mail. Os e-mails serão coletados na próxima execução agendada.
+Updating Email Queue Statuses. The emails will be picked up in the next scheduled run.,Atualizando status da fila de Email. Os Emails serão coletados na próxima execução agendada.
 Updating counter may lead to document name conflicts if not done properly,A atualização do contador pode levar a conflitos de nomes de documentos se não for feita corretamente
 Updating global settings,Atualizando configurações globais
 Updating naming series options,Atualizando opções de série de nomenclatura
@@ -4312,11 +4312,11 @@ Use POST,Usar POST
 Use STARTTLS,Usar STARTTLS
 Use a few uncommon words together.,Use algumas palavras incomuns juntas.
 "Use a few words, avoid common phrases.","Use poucas palavras, evite frases comuns."
-Use different Email ID,Use um ID de e-mail diferente
+Use different Email ID,Use um ID de Email diferente
 Use if the default settings don't seem to detect your data correctly,Use se as configurações padrão não detectarem seus dados corretamente
 Use of sub-query or function is restricted,O uso de subconsulta ou função é restrito
 Use the new Print Format Builder,Use o novo Construtor de Formato de Impressão
-"Use this, for example, if all sent emails should also be send to an archive.","Use isto, por exemplo, se todos os e-mails enviados também devem ser enviados para um arquivo."
+"Use this, for example, if all sent emails should also be send to an archive.","Use isto, por exemplo, se todos os Emails enviados também devem ser enviados para um arquivo."
 Used OAuth,OAuth usado
 User,Usuário
 User '{0}' already has the role '{1}',O usuário '{0}' já possui a função '{1}'
@@ -4325,8 +4325,8 @@ User Details,Detalhes do usuário
 User Doctype Permissions,Permissões de tipo de documento do usuário
 User Document Type,Tipo de documento do usuário
 User Document Types Limit Exceeded,Limite de tipos de documentos do usuário excedido
-User Email,E-mail do usuário
-User Emails,E-mails de usuários
+User Email,Email do usuário
+User Emails,Emails de usuários
 User Group,Grupo de usuários
 User Group Member,Membro do grupo de usuários
 User Group Members,Membros do grupo de usuários
@@ -4346,14 +4346,14 @@ User Session Display,Exibição da sessão do usuário
 User Social Login,Login social do usuário
 User Type,Tipo de usuário
 User Type Module,Módulo de tipo de usuário
-User can login using Email id or Mobile number,O usuário pode fazer login usando ID de e-mail ou número de celular
-User can login using Email id or User Name,O usuário pode fazer login usando ID de e-mail ou nome de usuário
+User can login using Email id or Mobile number,O usuário pode fazer login usando ID de Email ou número de celular
+User can login using Email id or User Name,O usuário pode fazer login usando ID de Email ou nome de usuário
 User does not have permission to create the new {0},O usuário não tem permissão para criar o novo {0}
 User is disabled,O usuário está desativado
 User is mandatory for Share,O usuário é obrigatório para compartilhar
 User permission already exists,A permissão do usuário já existe
-User with email address {0} does not exist,O usuário com endereço de e-mail {0} não existe
-User with email: {0} does not exist in the system. Please ask 'System Administrator' to create the user for you.,"Usuário com e-mail: {0} não existe no sistema. Por favor, peça ao 'Administrador do Sistema' para criar o usuário para você."
+User with email address {0} does not exist,O usuário com endereço de Email {0} não existe
+User with email: {0} does not exist in the system. Please ask 'System Administrator' to create the user for you.,"Usuário com Email: {0} não existe no sistema. Por favor, peça ao 'Administrador do Sistema' para criar o usuário para você."
 User {0} cannot be deleted,O usuário {0} não pode ser excluído
 User {0} cannot be disabled,O usuário {0} não pode ser desativado
 User {0} cannot be renamed,O usuário {0} não pode ser renomeado
@@ -4376,7 +4376,7 @@ Using this console may allow attackers to impersonate you and steal your informa
 Utilization,Utilização
 Utilization %,% de utilização
 Valid Login id required.,É necessário um ID de login válido.
-Valid email and name required,E-mail e nome válidos obrigatórios
+Valid email and name required,Email e nome válidos obrigatórios
 Validate Frappe Mail Settings,Validar configurações de correio Frappe
 Validate SSL Certificate,Validar certificado SSL
 Validation Error,Erro de validação
@@ -4402,8 +4402,8 @@ Verdana,Verdana
 Verification,Verificação
 Verification Code,Código de verificação
 Verification Link,Link de verificação
-Verification code email not sent. Please contact Administrator.,E-mail com código de verificação não enviado. Entre em contato com o administrador.
-Verification code has been sent to your registered email address.,O código de verificação foi enviado para o seu endereço de e-mail cadastrado.
+Verification code email not sent. Please contact Administrator.,Email com código de verificação não enviado. Entre em contato com o administrador.
+Verification code has been sent to your registered email address.,O código de verificação foi enviado para o seu endereço de Email cadastrado.
 Verify,Verificar
 Verify Password,Verifique a senha
 Verifying...,Verificando...
@@ -4492,21 +4492,21 @@ Website Slideshow Item,Item de apresentação de slides do site
 Website Theme,Tema do site
 Website Theme Ignore App,Tema do site para ignorar aplicativo
 Website Theme image link,Link da imagem do tema do site
-"Website, email or phone where vulnerabilities can be reported. Defaults to `https://security.frappe.io`","Site, e-mail ou telefone onde vulnerabilidades podem ser relatadas. O padrão é `https://security.frappe.io`"
+"Website, email or phone where vulnerabilities can be reported. Defaults to `https://security.frappe.io`","Site, Email ou telefone onde vulnerabilidades podem ser relatadas. O padrão é `https://security.frappe.io`"
 Websocket,WebSocket
 Wednesday,Quarta-feira
 Week,Semana
 Weekly,Semanalmente
 Welcome,Bem-vindo
-Welcome Email Template,Modelo de e-mail de boas-vindas
+Welcome Email Template,Modelo de Email de boas-vindas
 Welcome URL,URL de boas-vindas
-Welcome email sent,E-mail de boas-vindas enviado
+Welcome email sent,Email de boas-vindas enviado
 Welcome to Frappe!,Bem-vindo ao Frappe!
 Welcome to the {0} workspace,Bem-vindo ao espaço de trabalho {0}
 Welcome to {0},Bem-vindo a {0}
 What's New,O que há de novo
 "When enabled this will allow guests to upload files to your application, You can enable this if you wish to collect files from user without having them to log in, for example in job applications web form.","Quando ativado, isso permitirá que os convidados carreguem arquivos para o seu aplicativo. Você pode ativar isso se desejar coletar arquivos do usuário sem que eles façam login, por exemplo, no formulário da web de pedidos de emprego."
-"When sending document using email, store the PDF on Communication. Warning: This can increase your storage usage.","Ao enviar documento por e-mail, armazene o PDF em Comunicação. Aviso: isso pode aumentar o uso do armazenamento."
+"When sending document using email, store the PDF on Communication. Warning: This can increase your storage usage.","Ao enviar documento por Email, armazene o PDF em Comunicação. Aviso: isso pode aumentar o uso do armazenamento."
 "When uploading files, force the use of the web-based image capture. If this is unchecked, the default behavior is to use the mobile native camera when use from a mobile is detected.","Ao fazer upload de arquivos, force o uso da captura de imagens baseada na web. Se esta opção estiver desmarcada, o comportamento padrão é usar a câmera nativa do celular quando o uso de um celular for detectado."
 Which view of the associated DocType should this shortcut take you to?,Para qual visualização do DocType associado esse atalho deve levá-lo?
 Width,Largura
@@ -4565,7 +4565,7 @@ XLSX,XLSX
 XMLHttpRequest Error,Erro XMLHttpRequest
 Y Axis Fields,Campos do eixo Y
 Y Field,Campo Y
-Yahoo Mail,E-mail do Yahoo
+Yahoo Mail,Email do Yahoo
 Yandex.Mail,Yandex.Mail
 Yearly,Anual
 Yellow,Amarelo
@@ -4585,17 +4585,17 @@ You are not allowed to delete a standard Website Theme,Você não tem permissão
 You are not allowed to edit the report.,Você não tem permissão para editar o relatório.
 You are not allowed to export {} doctype,Você não tem permissão para exportar {} tipo de documento
 You are not allowed to print this report,Você não tem permissão para imprimir este relatório
-You are not allowed to send emails related to this document,Você não tem permissão para enviar e-mails relacionados a este documento
+You are not allowed to send emails related to this document,Você não tem permissão para enviar Emails relacionados a este documento
 You are not allowed to update the status of this event.,Você não tem permissão para atualizar o status deste evento.
 You are not allowed to update this Web Form Document,Você não tem permissão para atualizar este documento de formulário da Web
-You are not authorized to undo this email,Você não está autorizado a desfazer este e-mail
+You are not authorized to undo this email,Você não está autorizado a desfazer este Email
 You are not connected to Internet. Retry after sometime.,Você não está conectado à Internet. Tente novamente depois de algum tempo.
 You are not permitted to access this page without login.,Você não tem permissão para acessar esta página sem login.
 You are not permitted to access this page.,Você não tem permissão para acessar esta página.
 You are not permitted to access this resource. Login to access,Você não tem permissão para acessar este recurso. Faça login para acessar
-You are now following this document. You will receive daily updates via email. You can change this in User Settings.,Agora você está acompanhando este documento. Você receberá atualizações diárias por e-mail. Você pode alterar isso nas configurações do usuário.
+You are now following this document. You will receive daily updates via email. You can change this in User Settings.,Agora você está acompanhando este documento. Você receberá atualizações diárias por Email. Você pode alterar isso nas configurações do usuário.
 "You are only allowed to update order, do not remove or add apps.","Você só tem permissão para atualizar o pedido, não remover ou adicionar aplicativos."
-"You are selecting Sync Option as ALL, It will resync all read as well as unread message from server. This may also cause the duplication of Communication (emails).",Você está selecionando a opção de sincronização como ALL. Ele irá ressincronizar todas as mensagens lidas e não lidas do servidor. Isto também pode causar a duplicação da Comunicação (e-mails).
+"You are selecting Sync Option as ALL, It will resync all read as well as unread message from server. This may also cause the duplication of Communication (emails).",Você está selecionando a opção de sincronização como ALL. Ele irá ressincronizar todas as mensagens lidas e não lidas do servidor. Isto também pode causar a duplicação da Comunicação (Emails).
 You attached {0},Você anexou {0}
 You can add dynamic properties from the document by using Jinja templating.,Você pode adicionar propriedades dinâmicas do documento usando modelos Jinja.
 You can also access wkhtmltopdf variables (valid only in PDF print):,Você também pode acessar variáveis ​​wkhtmltopdf (válidas apenas na impressão de PDF):
@@ -4677,7 +4677,7 @@ You removed 1 row from {0},Você removeu 1 linha de {0}
 You removed attachment {0},Você removeu o anexo {0}
 You removed {0} rows from {1},Você removeu {0} linhas de {1}
 You seem good to go!,Você parece pronto para ir!
-You seem to have written your name instead of your email. Please enter a valid email address so that we can get back.,"Parece que você escreveu seu nome em vez de seu e-mail. Por favor, insira um endereço de e-mail válido para que possamos retornar."
+You seem to have written your name instead of your email. Please enter a valid email address so that we can get back.,"Parece que você escreveu seu nome em vez de seu Email. Por favor, insira um endereço de Email válido para que possamos retornar."
 You selected Draft or Cancelled documents,Você selecionou documentos Rascunho ou Cancelados
 You submitted this document,Você enviou este documento
 You submitted this document {0},Você enviou este documento {0}
@@ -4707,10 +4707,10 @@ Your invitation to join {0} has expired.,Seu convite para participar de {0} expi
 Your login id is,Seu ID de login é
 Your new password has been set successfully.,Sua nova senha foi definida com sucesso.
 Your old password is incorrect.,Sua senha antiga está incorreta.
-Your organization name and address for the email footer.,Nome e endereço da sua organização para o rodapé do e-mail.
+Your organization name and address for the email footer.,Nome e endereço da sua organização para o rodapé do Email.
 Your password has been changed and you might have been logged out of all systems.<br>Please contact the Administrator for further assistance.,Sua senha foi alterada e você pode ter sido desconectado de todos os sistemas.<br>Entre em contato com o Administrador para obter mais assistência.
-"Your query has been received. We will reply back shortly. If you have any additional information, please reply to this mail.","Sua consulta foi recebida. Responderemos em breve. Se você tiver alguma informação adicional, responda a este e-mail."
-Your report is being generated in the background. You will receive an email on {0} with a download link once it is ready.,Seu relatório está sendo gerado em segundo plano. Você receberá um e-mail em {0} com um link para download assim que estiver pronto.
+"Your query has been received. We will reply back shortly. If you have any additional information, please reply to this mail.","Sua consulta foi recebida. Responderemos em breve. Se você tiver alguma informação adicional, responda a este Email."
+Your report is being generated in the background. You will receive an email on {0} with a download link once it is ready.,Seu relatório está sendo gerado em segundo plano. Você receberá um Email em {0} com um link para download assim que estiver pronto.
 "Your session has expired, please login again to continue.","Sua sessão expirou, faça login novamente para continuar."
 Your verification code is {0},Seu código de verificação é {0}
 Zero,Zero
@@ -4802,8 +4802,8 @@ e893,e893
 e8b5,e8b5
 e95a,e95a
 emacs,emacs
-email,e-mail
-email inbox,caixa de entrada de e-mail
+email,Email
+email inbox,caixa de entrada de Email
 empty,vazio
 export,exportar
 f5df,f5df
@@ -4966,7 +4966,7 @@ write,escrever
 {0} is after {1},{0} está depois de {1}
 {0} is an ancestor of {1},{0} é um ancestral de {1}
 {0} is an invalid Data field.,{0} é um campo de dados inválido.
-{0} is an invalid email address in 'Recipients',{0} é um endereço de e-mail inválido em 'Destinatários'
+{0} is an invalid email address in 'Recipients',{0} é um endereço de Email inválido em 'Destinatários'
 {0} is before {1},{0} é antes de {1}
 {0} is between {1},{0} está entre {1}
 {0} is between {1} and {2},{0} está entre {1} e {2}
@@ -4985,7 +4985,7 @@ write,escrever
 {0} is not a valid Calendar. Redirecting to default Calendar.,{0} não é um calendário válido. Redirecionando para o calendário padrão.
 {0} is not a valid Cron expression.,{0} não é uma expressão Cron válida.
 {0} is not a valid DocType for Dynamic Link,{0} não é um DocType válido para Dynamic Link
-{0} is not a valid Email Address,{0} não é um endereço de e-mail válido
+{0} is not a valid Email Address,{0} não é um endereço de Email válido
 {0} is not a valid ISO 3166 ALPHA-2 code.,{0} não é um código ISO 3166 ALPHA-2 válido.
 {0} is not a valid Name,{0} não é um nome válido
 {0} is not a valid parent DocType for {1},{0} não é um DocType pai válido para {1}
@@ -5008,7 +5008,7 @@ write,escrever
 {0} last edited this,{0} editou isto pela última vez
 {0} logged in,{0} conectado
 {0} logged out: {1},{0} desconectado: {1}
-{0} m,{0} minutos
+{0} m,{0} min
 {0} must be beginning with '{1}',{0} deve começar com '{1}'
 {0} must be equal to '{1}',{0} deve ser igual a '{1}'
 {0} must be none of {1},{0} não deve ser nenhum de {1}
@@ -5036,15 +5036,15 @@ write,escrever
 {0} submitted this document,{0} enviou este documento
 {0} submitted this document {1},{0} enviou este documento {1}
 {0} subscribers added,{0} inscritos adicionados
-{0} to stop receiving emails of this type,{0} para parar de receber e-mails deste tipo
+{0} to stop receiving emails of this type,{0} para parar de receber Emails deste tipo
 {0} to {1},{0} a {1}
 {0} un-shared this document with {1},{0} cancelou o compartilhamento deste documento com {1}
 {0} updated,{0} atualizado
 {0} values selected,{0} valores selecionados
 {0} viewed this,{0} viu isto
-{0} w,{0} c
+{0} w,{0} s
 {0} with the role <strong>{1}</strong>,{0} com a função <strong>{1}</strong>
-{0} y,{0} anos
+{0} y,{0} a
 {0} {1} added to Dashboard {2},{0} {1} adicionado ao Painel {2}
 "{0} {1} cannot be ""{2}"". It should be one of ""{3}""","{0} {1} não pode ser ""{2}"". Deve ser um dos ""{3}"""
 {0} {1} cannot be a leaf node as it has children,{0} {1} não pode ser um nó folha porque tem filhos
@@ -5059,7 +5059,7 @@ write,escrever
 {0}: Cannot set Import without Create,{0}: não é possível definir Importar sem Criar
 "{0}: Cannot set Submit, Cancel, Amend without Write","{0}: não é possível definir Enviar, Cancelar, Alterar sem Gravar"
 {0}: Cannot set import as {1} is not importable,{0}: não é possível definir a importação porque {1} não é importável
-"{0}: Failed to attach new recurring document. To enable attaching document in the auto repeat notification email, enable {1} in Print Settings","{0}: falha ao anexar novo documento recorrente. Para ativar o anexo de documento no e-mail de notificação de repetição automática, ative {1} em Configurações de impressão"
+"{0}: Failed to attach new recurring document. To enable attaching document in the auto repeat notification email, enable {1} in Print Settings","{0}: falha ao anexar novo documento recorrente. Para ativar o anexo de documento no Email de notificação de repetição automática, ative {1} em Configurações de impressão"
 {0}: Field {1} in row {2} cannot be hidden and mandatory without default,{0}: o campo {1} na linha {2} não pode ser oculto e é obrigatório sem padrão
 {0}: Field {1} of type {2} cannot be mandatory,{0}: O campo {1} do tipo {2} não pode ser obrigatório
 {0}: Fieldname {1} appears multiple times in rows {2},{0}: o nome do campo {1} aparece diversas vezes nas linhas {2}
