@@ -214,8 +214,8 @@ Added default log doctypes: {},Foram adicionados documentos de registro padrão:
 Added {0} ({1}),Adicionado {0} ({1})
 Address,Endereço
 Address And Contacts,Endereço e contatos
-Address Line 1,Endereço Linha 1
-Address Line 2,Linha de endereço 2
+Address Line 1,Endereço (Linha 1)
+Address Line 2,Endereço (Linha 2)
 Address Template,Modelo de endereço
 Address Title is mandatory.,O título do endereço é obrigatório.
 Address Type,Tipo de endereço
@@ -258,7 +258,7 @@ Allow Google Contacts Access,Permitir acesso aos Contatos do Google
 Allow Guests to Upload Files,Permitir que convidados façam upload de arquivos
 Allow Import (via Data Import Tool),Permitir importação (por meio da ferramenta de importação de dados)
 Allow Login After Fail,Permitir login após falha
-Allow Login using Mobile Number,Permitir login usando número de celular
+Allow Login using Mobile Number,Permitir login usando número de telefone
 Allow Print for Draft,Permitir impressão para rascunho
 Allow Sending Usage Data for Improving Applications,Permitir o envio de dados de uso para melhorar aplicativos
 Allow comments,Permitir comentários
@@ -1514,7 +1514,7 @@ Field {0} does not exist on {1},O campo {0} não existe em {1}
 Field {0} is referring to non-existing doctype {1}.,O campo {0} refere-se ao tipo de documento {1} inexistente.
 Field {0} must be a virtual field to support virtual doctype.,O campo {0} deve ser um campo virtual para suportar o tipo de documento virtual.
 Field {0} not found.,Campo {0} não encontrado.
-Field {0} on document {1} is neither a Mobile number field nor a Customer or User link,O campo {0} no documento {1} não é um campo de número de celular nem um link de cliente ou usuário
+Field {0} on document {1} is neither a Mobile number field nor a Customer or User link,O campo {0} no documento {1} não é um campo de número de telefone nem um link de cliente ou usuário
 Fieldname,Nome do campo
 Fieldname '{0}' conflicting with a {1} of the name {2} in {3},Nome do campo '{0}' em conflito com um {1} do nome {2} em {3}
 Fieldname called {0} must exist to enable autonaming,O nome do campo chamado {0} deve existir para ativar a nomeação automática
@@ -1883,7 +1883,7 @@ Import Log,Registro de importação
 Import Progress,Progresso da importação
 Import Subscribers,Importar assinantes
 Import Type,Tipo de importação
-Import Zip,Importar CEP
+Import Zip,Importar Zip
 "Import template should be of type .csv, .xlsx or .xls","O modelo de importação deve ser do tipo .csv, .xlsx ou .xls"
 Import template should contain a Header and atleast one row.,O modelo de importação deve conter um cabeçalho e pelo menos uma linha.
 "Import timed out, please re-try.",A importação expirou. Tente novamente.
@@ -2668,9 +2668,9 @@ Notification Recipient,Destinatário da Notificação
 Notification Settings,Configurações de notificação
 Notification Subscribed Document,Documento Assinado de Notificação
 Notification sent to,Notificação enviada para
-Notification: customer {0} has no Mobile number set,Notificação: o cliente {0} não tem número de celular definido
+Notification: customer {0} has no Mobile number set,Notificação: o cliente {0} não tem número de telefone definido
 Notification: document {0} has no {1} number set (field: {2}),Notificação: o documento {0} não possui nenhum número {1} definido (campo: {2})
-Notification: user {0} has no Mobile number set,Notificação: o usuário {0} não tem número de celular definido
+Notification: user {0} has no Mobile number set,Notificação: o usuário {0} não tem número de telefone definido
 Notifications Disabled,Notificações desativadas
 Notifications and bulk mails will be sent from this outgoing server.,Notificações e Emails em massa serão enviados deste servidor de saída.
 Notify Users On Every Login,Notificar usuários em cada login
@@ -2779,7 +2779,7 @@ Open in a new tab,Abrir em uma nova aba
 Open in new tab,Abrir em nova aba
 Open list item,Abrir item da lista
 Open reference document,Abrir documento de referência
-Open your authentication app on your mobile phone.,Abra seu aplicativo de autenticação no seu celular.
+Open your authentication app on your mobile phone.,Abra seu aplicativo de autenticação no seu telefone.
 Open {0},Abra {0}
 OpenID Configuration,Configuração OpenID
 OpenID Configuration fetched successfully!,Configuração OpenID obtida com sucesso!
@@ -2977,7 +2977,7 @@ Please enter a valid email address.,Insira um endereço de Email válido.
 Please enter both your email and message so that we can get back to you. Thanks!,"Por favor, insira seu Email e mensagem para que possamos entrar em contato com você. Obrigado!"
 Please enter the password,Por favor digite a senha
 Please enter the password for: <b>{0}</b>,Digite a senha de: <b>{0}</b>
-Please enter valid mobile nos,Insira números de celular válidos
+Please enter valid mobile nos,Insira números de telefone válidos
 Please enter your new password.,"Por favor, digite sua nova senha."
 Please enter your old password.,"Por favor, digite sua senha antiga."
 Please find attached {0}: {1},Segue anexo {0}: {1}
@@ -3071,7 +3071,7 @@ Previous Submission,Envio Anterior
 Primary Address,Endereço principal
 Primary Contact,Contato principal
 Primary Email,Email principal
-Primary Mobile,Celular principal
+Primary Mobile,Telefone principal
 Primary Phone,Telefone principal
 Primary key of doctype {0} can not be changed as there are existing values.,A chave primária do tipo de documento {0} não pode ser alterada porque existem valores existentes.
 Print,Imprimir
@@ -4346,7 +4346,7 @@ User Session Display,Exibição da sessão do usuário
 User Social Login,Login social do usuário
 User Type,Tipo de usuário
 User Type Module,Módulo de tipo de usuário
-User can login using Email id or Mobile number,O usuário pode fazer login usando ID de Email ou número de celular
+User can login using Email id or Mobile number,O usuário pode fazer login usando ID de Email ou número de telefone
 User can login using Email id or User Name,O usuário pode fazer login usando ID de Email ou nome de usuário
 User does not have permission to create the new {0},O usuário não tem permissão para criar o novo {0}
 User is disabled,O usuário está desativado
@@ -4507,7 +4507,7 @@ Welcome to {0},Bem-vindo a {0}
 What's New,O que há de novo
 "When enabled this will allow guests to upload files to your application, You can enable this if you wish to collect files from user without having them to log in, for example in job applications web form.","Quando ativado, isso permitirá que os convidados carreguem arquivos para o seu aplicativo. Você pode ativar isso se desejar coletar arquivos do usuário sem que eles façam login, por exemplo, no formulário da web de pedidos de emprego."
 "When sending document using email, store the PDF on Communication. Warning: This can increase your storage usage.","Ao enviar documento por Email, armazene o PDF em Comunicação. Aviso: isso pode aumentar o uso do armazenamento."
-"When uploading files, force the use of the web-based image capture. If this is unchecked, the default behavior is to use the mobile native camera when use from a mobile is detected.","Ao fazer upload de arquivos, force o uso da captura de imagens baseada na web. Se esta opção estiver desmarcada, o comportamento padrão é usar a câmera nativa do celular quando o uso de um celular for detectado."
+"When uploading files, force the use of the web-based image capture. If this is unchecked, the default behavior is to use the mobile native camera when use from a mobile is detected.","Ao fazer upload de arquivos, force o uso da captura de imagens baseada na web. Se esta opção estiver desmarcada, o comportamento padrão é usar a câmera nativa do telefone quando o uso de um telefone for detectado."
 Which view of the associated DocType should this shortcut take you to?,Para qual visualização do DocType associado esse atalho deve levá-lo?
 Width,Largura
 Widths can be set in px or %.,As larguras podem ser definidas em px ou%.
